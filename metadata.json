@@ -1,0 +1,8 @@
+{
+  "name": "Conversor KML/KMZ para Drone DJI",
+  "description": "Transforme arquivos KML e KMZ em planos de voo compatíveis com DJI Pilot 2 (WPML), DJI Terra e drones DJI.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
