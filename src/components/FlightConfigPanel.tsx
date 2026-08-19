@@ -44,20 +44,20 @@ export const FlightConfigPanel: React.FC<FlightConfigPanelProps> = ({
       : 'N/A';
 
   return (
-    <div className="space-y-4 text-[#e0e0e0]">
+    <div className="space-y-4 text-[#e2edf0]">
       {/* 1. Drone Preset & Mission Identification */}
-      <div className="bg-[#111115] border border-[#ffffff10] rounded-2xl p-5 shadow-sm relative overflow-hidden">
+      <div className="bg-[#091e23] border border-[#143f47] rounded-3xl p-5 shadow-sm relative overflow-hidden">
         <div className="flex items-center justify-between mb-3">
-          <h3 className="text-[10px] font-bold text-[#666677] uppercase tracking-widest flex items-center gap-1.5">
-            <Plane className="w-3.5 h-3.5 text-cyan-400" />
+          <h3 className="text-[10px] font-bold text-[#6f969d] uppercase tracking-widest flex items-center gap-1.5">
+            <Plane className="w-3.5 h-3.5 text-[#00f59b]" />
             <span>Modelo de Drone & Identificação</span>
           </h3>
-          <span className="text-[10px] font-mono text-cyan-400">DJI WPML</span>
+          <span className="text-[10px] font-mono text-[#00f59b] font-bold">DJI WPML</span>
         </div>
 
         <div className="space-y-3">
           <div>
-            <label className="block text-[11px] text-[#888899] mb-1 font-mono uppercase tracking-wider">
+            <label className="block text-[11px] text-[#7ca5ad] mb-1 font-mono uppercase tracking-wider">
               Drone Alvo (Presets Oficiais DJI)
             </label>
             <select
@@ -72,9 +72,9 @@ export const FlightConfigPanel: React.FC<FlightConfigPanelProps> = ({
                   maxFlightSpeed: preset ? preset.maxSpeed : settings.maxFlightSpeed,
                 });
               }}
-              className="w-full bg-[#0a0a0c] border border-[#ffffff15] rounded-xl px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-cyan-500 transition"
+              className="w-full bg-[#061518] border border-[#143f47] rounded-2xl px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-[#00f59b] transition"
             >
-              <optgroup label="Série Enterprise (DJI Pilot 2 / WPML)">
+              <optgroup label="Série Enterprise (DJI Pilot 2 / WPML)" className="bg-[#091e23]">
                 <option value="mavic3e">DJI Mavic 3 Enterprise (M3E)</option>
                 <option value="mavic3t">DJI Mavic 3 Thermal (M3T)</option>
                 <option value="mavic3m">DJI Mavic 3 Multispectral (M3M)</option>
@@ -83,22 +83,22 @@ export const FlightConfigPanel: React.FC<FlightConfigPanelProps> = ({
                 <option value="matrice300">DJI Matrice 300 RTK</option>
                 <option value="p4rtk">DJI Phantom 4 RTK</option>
               </optgroup>
-              <optgroup label="Série Consumer / Pro (Litchi / DJI Fly Waypoints)">
+              <optgroup label="Série Consumer / Pro (Litchi / DJI Fly Waypoints)" className="bg-[#091e23]">
                 <option value="mini4pro">DJI Mini 4 Pro</option>
                 <option value="mini3pro">DJI Mini 3 Pro</option>
                 <option value="air3">DJI Air 3</option>
               </optgroup>
-              <optgroup label="Outro">
+              <optgroup label="Outro" className="bg-[#091e23]">
                 <option value="custom">Drone DJI Personalizado</option>
               </optgroup>
             </select>
-            <p className="text-[11px] text-[#777788] mt-1.5 italic leading-relaxed">
+            <p className="text-[11px] text-[#638c94] mt-1.5 italic leading-relaxed">
               {currentPreset.description}
             </p>
           </div>
 
           <div>
-            <label className="block text-[11px] text-[#888899] mb-1 font-mono uppercase tracking-wider">
+            <label className="block text-[11px] text-[#7ca5ad] mb-1 font-mono uppercase tracking-wider">
               Nome da Missão (DJI Task Name)
             </label>
             <input
@@ -107,7 +107,7 @@ export const FlightConfigPanel: React.FC<FlightConfigPanelProps> = ({
               value={settings.missionName}
               onChange={(e) => onChangeSettings({ missionName: e.target.value })}
               placeholder="Ex: Mapeamento_Gleba_Norte"
-              className="w-full bg-[#0a0a0c] border border-[#ffffff15] rounded-xl px-3.5 py-2 text-xs text-cyan-300 focus:outline-none focus:border-cyan-500 font-mono transition"
+              className="w-full bg-[#061518] border border-[#143f47] rounded-2xl px-3.5 py-2 text-xs text-[#00f59b] focus:outline-none focus:border-[#00f59b] font-mono transition"
             />
           </div>
         </div>
@@ -115,26 +115,26 @@ export const FlightConfigPanel: React.FC<FlightConfigPanelProps> = ({
 
       {/* 2. Grid & Lawnmower Photogrammetry Mode (if polygon uploaded) */}
       {hasPolygons && (
-        <div className="bg-[#111115] border border-cyan-500/30 rounded-2xl p-5 shadow-sm relative overflow-hidden">
+        <div className="bg-[#091e23] border border-[#00f59b]/30 rounded-3xl p-5 shadow-sm relative overflow-hidden">
           <div className="flex items-center justify-between mb-3">
-            <h3 className="text-[10px] font-bold text-cyan-400 uppercase tracking-widest flex items-center gap-1.5">
+            <h3 className="text-[10px] font-bold text-[#00f59b] uppercase tracking-widest flex items-center gap-1.5">
               <Grid className="w-3.5 h-3.5" />
               <span>Gerador de Grade de Mapeamento</span>
             </h3>
             {isGridActive && (
-              <span className="bg-cyan-500/15 text-cyan-300 text-[10px] font-mono font-bold px-2.5 py-0.5 rounded-full border border-cyan-500/40">
+              <span className="bg-[#00f59b]/15 text-[#00f59b] text-[10px] font-mono font-bold px-2.5 py-0.5 rounded-full border border-[#00f59b]/40">
                 GRADE ATIVA
               </span>
             )}
           </div>
 
-          <p className="text-xs text-[#888899] mb-3 leading-relaxed">
+          <p className="text-xs text-[#7ca5ad] mb-3 leading-relaxed">
             Polígono detectado. Geração automática de faixas paralelas em zigue-zague para ortomosaico:
           </p>
 
           <div className="grid grid-cols-2 gap-3 mb-3">
             <div>
-              <label className="block text-[10px] text-[#888899] mb-1 font-mono uppercase">
+              <label className="block text-[10px] text-[#7ca5ad] mb-1 font-mono uppercase">
                 Espaçamento de Faixas
               </label>
               <div className="relative">
@@ -145,14 +145,14 @@ export const FlightConfigPanel: React.FC<FlightConfigPanelProps> = ({
                   max="300"
                   value={settings.gridSpacing}
                   onChange={(e) => onChangeSettings({ gridSpacing: Number(e.target.value) })}
-                  className="w-full bg-[#0a0a0c] border border-[#ffffff15] rounded-xl px-3 py-1.5 text-xs text-white font-mono focus:border-cyan-500 focus:outline-none"
+                  className="w-full bg-[#061518] border border-[#143f47] rounded-2xl px-3 py-1.5 text-xs text-white font-mono focus:border-[#00f59b] focus:outline-none"
                 />
-                <span className="absolute right-2.5 top-1.5 text-[11px] text-[#666]">m</span>
+                <span className="absolute right-2.5 top-1.5 text-[11px] text-[#6f969d]">m</span>
               </div>
             </div>
 
             <div>
-              <label className="block text-[10px] text-[#888899] mb-1 font-mono uppercase">
+              <label className="block text-[10px] text-[#7ca5ad] mb-1 font-mono uppercase">
                 Ângulo das Linhas
               </label>
               <div className="relative">
@@ -163,18 +163,18 @@ export const FlightConfigPanel: React.FC<FlightConfigPanelProps> = ({
                   max="360"
                   value={settings.gridAngle}
                   onChange={(e) => onChangeSettings({ gridAngle: Number(e.target.value) })}
-                  className="w-full bg-[#0a0a0c] border border-[#ffffff15] rounded-xl px-3 py-1.5 text-xs text-white font-mono focus:border-cyan-500 focus:outline-none"
+                  className="w-full bg-[#061518] border border-[#143f47] rounded-2xl px-3 py-1.5 text-xs text-white font-mono focus:border-[#00f59b] focus:outline-none"
                 />
-                <span className="absolute right-2.5 top-1.5 text-[11px] text-[#666]">°</span>
+                <span className="absolute right-2.5 top-1.5 text-[11px] text-[#6f969d]">°</span>
               </div>
             </div>
           </div>
 
           {/* Quick angle adjustment slider */}
           <div className="mb-4">
-            <div className="flex justify-between text-[10px] text-[#777] font-mono mb-1.5">
+            <div className="flex justify-between text-[10px] text-[#6f969d] font-mono mb-1.5">
               <span>ORIENTAÇÃO DE VOO</span>
-              <span className="text-cyan-400 font-bold">{settings.gridAngle}°</span>
+              <span className="text-[#00f59b] font-bold">{settings.gridAngle}°</span>
             </div>
             <input
               id="slider-grid-angle"
@@ -184,7 +184,7 @@ export const FlightConfigPanel: React.FC<FlightConfigPanelProps> = ({
               step="5"
               value={settings.gridAngle}
               onChange={(e) => onChangeSettings({ gridAngle: Number(e.target.value) })}
-              className="w-full accent-cyan-500 cursor-pointer h-1.5 bg-[#222228] rounded-lg"
+              className="w-full accent-[#00f59b] cursor-pointer h-1.5 bg-[#061518] rounded-lg"
             />
           </div>
 
@@ -192,7 +192,7 @@ export const FlightConfigPanel: React.FC<FlightConfigPanelProps> = ({
             <button
               id="btn-apply-grid"
               onClick={onGenerateGrid}
-              className="flex-1 flex items-center justify-center gap-1.5 py-2.5 px-3 bg-white hover:bg-cyan-400 text-black font-bold text-xs rounded-xl uppercase tracking-tight transition shadow-md"
+              className="flex-1 flex items-center justify-center gap-1.5 py-2.5 px-3 bg-[#00f59b] hover:bg-[#00df8c] text-black font-bold text-xs rounded-2xl uppercase tracking-tight transition shadow-md cursor-pointer"
             >
               <Grid className="w-3.5 h-3.5" />
               <span>Gerar / Atualizar Grade</span>
@@ -201,7 +201,7 @@ export const FlightConfigPanel: React.FC<FlightConfigPanelProps> = ({
               <button
                 id="btn-reset-to-perimeter"
                 onClick={onResetWaypoints}
-                className="py-2.5 px-3 bg-[#1e1e24] hover:bg-[#282832] text-[#aaa] hover:text-white text-xs rounded-xl border border-[#ffffff10] transition"
+                className="py-2.5 px-3 bg-[#061518] hover:bg-[#0c262d] text-[#7ca5ad] hover:text-white text-xs rounded-2xl border border-[#143f47] transition cursor-pointer"
                 title="Voltar para pontos do perímetro original"
               >
                 <RotateCw className="w-3.5 h-3.5" />
@@ -211,21 +211,21 @@ export const FlightConfigPanel: React.FC<FlightConfigPanelProps> = ({
         </div>
       )}
 
-      {/* 3. Flight Altitude & Dynamics Bento Box */}
-      <div className="bg-[#111115] border border-[#ffffff10] rounded-2xl p-5 shadow-sm">
+      {/* 3. Flight Altitude & Dynamics Box */}
+      <div className="bg-[#091e23] border border-[#143f47] rounded-3xl p-5 shadow-sm">
         <div className="flex items-center justify-between mb-3">
-          <h3 className="text-[10px] font-bold text-[#666677] uppercase tracking-widest flex items-center gap-1.5">
-            <Gauge className="w-3.5 h-3.5 text-cyan-400" />
+          <h3 className="text-[10px] font-bold text-[#6f969d] uppercase tracking-widest flex items-center gap-1.5">
+            <Gauge className="w-3.5 h-3.5 text-[#00f59b]" />
             <span>Parâmetros de Voo & Altitude</span>
           </h3>
-          <span className="text-[10px] font-mono text-[#888]">DINÂMICA</span>
+          <span className="text-[10px] font-mono text-[#7ca5ad]">DINÂMICA</span>
         </div>
 
         <div className="grid grid-cols-2 gap-3 mb-3">
-          <div className="bg-[#ffffff03] p-3 rounded-xl border border-[#ffffff05]">
+          <div className="bg-[#061518] p-3 rounded-2xl border border-[#143f47]/50">
             <div className="flex justify-between items-center mb-1">
-              <span className="text-[10px] font-mono text-[#777] uppercase">Altitude AGL</span>
-              <span className="text-xs font-mono text-cyan-400 font-bold">{settings.flightAltitude}m</span>
+              <span className="text-[10px] font-mono text-[#6f969d] uppercase">Altitude AGL</span>
+              <span className="text-xs font-mono text-[#00f59b] font-bold">{settings.flightAltitude}m</span>
             </div>
             <div className="relative mt-1">
               <input
@@ -235,15 +235,15 @@ export const FlightConfigPanel: React.FC<FlightConfigPanelProps> = ({
                 max="500"
                 value={settings.flightAltitude}
                 onChange={(e) => onChangeSettings({ flightAltitude: Number(e.target.value) })}
-                className="w-full bg-[#0a0a0c] border border-[#ffffff15] rounded-lg px-2.5 py-1.5 text-xs text-white font-mono font-bold focus:border-cyan-500 focus:outline-none"
+                className="w-full bg-[#091e23] border border-[#143f47] rounded-xl px-2.5 py-1.5 text-xs text-white font-mono font-bold focus:border-[#00f59b] focus:outline-none"
               />
             </div>
           </div>
 
-          <div className="bg-[#ffffff03] p-3 rounded-xl border border-[#ffffff05]">
+          <div className="bg-[#061518] p-3 rounded-2xl border border-[#143f47]/50">
             <div className="flex justify-between items-center mb-1">
-              <span className="text-[10px] font-mono text-[#777] uppercase">Velocidade</span>
-              <span className="text-xs font-mono text-cyan-400 font-bold">{settings.flightSpeed} m/s</span>
+              <span className="text-[10px] font-mono text-[#6f969d] uppercase">Velocidade</span>
+              <span className="text-xs font-mono text-[#00f59b] font-bold">{settings.flightSpeed} m/s</span>
             </div>
             <div className="relative mt-1">
               <input
@@ -254,7 +254,7 @@ export const FlightConfigPanel: React.FC<FlightConfigPanelProps> = ({
                 step="0.5"
                 value={settings.flightSpeed}
                 onChange={(e) => onChangeSettings({ flightSpeed: Number(e.target.value) })}
-                className="w-full bg-[#0a0a0c] border border-[#ffffff15] rounded-lg px-2.5 py-1.5 text-xs text-white font-mono font-bold focus:border-cyan-500 focus:outline-none"
+                className="w-full bg-[#091e23] border border-[#143f47] rounded-xl px-2.5 py-1.5 text-xs text-white font-mono font-bold focus:border-[#00f59b] focus:outline-none"
               />
             </div>
           </div>
@@ -262,13 +262,13 @@ export const FlightConfigPanel: React.FC<FlightConfigPanelProps> = ({
 
         {/* Speed Indicator Bar */}
         <div className="mb-3">
-          <div className="flex justify-between text-[10px] text-[#666] font-mono mb-1">
+          <div className="flex justify-between text-[10px] text-[#6f969d] font-mono mb-1">
             <span>VELOCIDADE PROGRAMADA</span>
-            <span>{((settings.flightSpeed || 8) * 3.6).toFixed(0)} km/h</span>
+            <span className="text-white font-bold">{((settings.flightSpeed || 8) * 3.6).toFixed(0)} km/h</span>
           </div>
-          <div className="w-full h-1 bg-[#222] rounded-full overflow-hidden">
+          <div className="w-full h-1.5 bg-[#061518] rounded-full overflow-hidden">
             <div
-              className="h-full bg-cyan-500 transition-all duration-300"
+              className="h-full bg-[#00f59b] transition-all duration-300 shadow-[0_0_8px_rgba(0,245,155,0.5)]"
               style={{
                 width: `${Math.min(100, ((settings.flightSpeed || 8) / (currentPreset.maxSpeed || 15)) * 100)}%`,
               }}
@@ -277,8 +277,8 @@ export const FlightConfigPanel: React.FC<FlightConfigPanelProps> = ({
         </div>
 
         {/* GSD Estimation Pill */}
-        <div className="flex items-center justify-between bg-[#ffffff03] border border-[#ffffff08] rounded-xl px-3 py-2 text-xs text-[#aaa]">
-          <div className="flex items-center gap-1.5 text-[#777]">
+        <div className="flex items-center justify-between bg-[#061518] border border-[#143f47]/60 rounded-2xl px-3.5 py-2.5 text-xs text-[#82aab2]">
+          <div className="flex items-center gap-1.5 text-[#6f969d]">
             <Info className="w-3.5 h-3.5 text-cyan-400" />
             <span className="text-[11px] font-mono">GSD Estimado (Solo):</span>
           </div>
@@ -286,7 +286,7 @@ export const FlightConfigPanel: React.FC<FlightConfigPanelProps> = ({
         </div>
 
         <div className="mt-3">
-          <label className="block text-[10px] text-[#888899] mb-1 font-mono uppercase tracking-wider">
+          <label className="block text-[10px] text-[#7ca5ad] mb-1 font-mono uppercase tracking-wider">
             Referência de Altitude
           </label>
           <select
@@ -297,46 +297,46 @@ export const FlightConfigPanel: React.FC<FlightConfigPanelProps> = ({
                 altitudeMode: e.target.value as 'relativeToStartPoint' | 'WGS84',
               })
             }
-            className="w-full bg-[#0a0a0c] border border-[#ffffff15] rounded-xl px-3 py-2 text-xs text-white focus:border-cyan-500 focus:outline-none"
+            className="w-full bg-[#061518] border border-[#143f47] rounded-2xl px-3 py-2 text-xs text-white focus:border-[#00f59b] focus:outline-none"
           >
-            <option value="relativeToStartPoint">
+            <option value="relativeToStartPoint" className="bg-[#091e23]">
               Relativa ao Ponto de Decolagem (AGL - Padrão DJI)
             </option>
-            <option value="WGS84">Altitude Elipsoidal Absoluta (WGS84 / EGM96)</option>
+            <option value="WGS84" className="bg-[#091e23]">Altitude Elipsoidal Absoluta (WGS84 / EGM96)</option>
           </select>
         </div>
       </div>
 
       {/* 4. Gimbal, Heading & Camera Actions */}
-      <div className="bg-[#111115] border border-[#ffffff10] rounded-2xl p-5 shadow-sm">
+      <div className="bg-[#091e23] border border-[#143f47] rounded-3xl p-5 shadow-sm">
         <div className="flex items-center justify-between mb-3">
-          <h3 className="text-[10px] font-bold text-[#666677] uppercase tracking-widest flex items-center gap-1.5">
-            <Camera className="w-3.5 h-3.5 text-cyan-400" />
+          <h3 className="text-[10px] font-bold text-[#6f969d] uppercase tracking-widest flex items-center gap-1.5">
+            <Camera className="w-3.5 h-3.5 text-[#00f59b]" />
             <span>Câmera, Gimbal & Disparos</span>
           </h3>
-          <span className="text-[10px] font-mono text-[#888]">PAYLOAD</span>
+          <span className="text-[10px] font-mono text-[#7ca5ad]">PAYLOAD</span>
         </div>
 
         <div className="grid grid-cols-2 gap-3 mb-3">
           <div>
-            <label className="block text-[10px] text-[#888899] mb-1 font-mono uppercase">
+            <label className="block text-[10px] text-[#7ca5ad] mb-1 font-mono uppercase">
               Inclinação Gimbal (Pitch)
             </label>
             <select
               id="select-gimbal-pitch"
               value={settings.gimbalPitch}
               onChange={(e) => onChangeSettings({ gimbalPitch: Number(e.target.value) })}
-              className="w-full bg-[#0a0a0c] border border-[#ffffff15] rounded-xl px-3 py-2 text-xs text-white focus:border-cyan-500 focus:outline-none"
+              className="w-full bg-[#061518] border border-[#143f47] rounded-2xl px-3 py-2 text-xs text-white focus:border-[#00f59b] focus:outline-none"
             >
-              <option value="-90">-90° Nadir (Mapeamento)</option>
-              <option value="-45">-45° Oblíqua (Modelo 3D)</option>
-              <option value="-60">-60° Oblíqua Média</option>
-              <option value="0">0° Frontal (Inspeção)</option>
+              <option value="-90" className="bg-[#091e23]">-90° Nadir (Mapeamento)</option>
+              <option value="-45" className="bg-[#091e23]">-45° Oblíqua (Modelo 3D)</option>
+              <option value="-60" className="bg-[#091e23]">-60° Oblíqua Média</option>
+              <option value="0" className="bg-[#091e23]">0° Frontal (Inspeção)</option>
             </select>
           </div>
 
           <div>
-            <label className="block text-[10px] text-[#888899] mb-1 font-mono uppercase">
+            <label className="block text-[10px] text-[#7ca5ad] mb-1 font-mono uppercase">
               Ação nos Waypoints
             </label>
             <select
@@ -347,17 +347,17 @@ export const FlightConfigPanel: React.FC<FlightConfigPanelProps> = ({
                   actionOnWaypoint: e.target.value as 'takePhoto' | 'hover' | 'none',
                 })
               }
-              className="w-full bg-[#0a0a0c] border border-[#ffffff15] rounded-xl px-3 py-2 text-xs text-white focus:border-cyan-500 focus:outline-none"
+              className="w-full bg-[#061518] border border-[#143f47] rounded-2xl px-3 py-2 text-xs text-white focus:border-[#00f59b] focus:outline-none"
             >
-              <option value="takePhoto">Disparar Foto (takePhoto)</option>
-              <option value="hover">Pairar / Hover por X seg</option>
-              <option value="none">Apenas Navegar (Sem parada)</option>
+              <option value="takePhoto" className="bg-[#091e23]">Disparar Foto (takePhoto)</option>
+              <option value="hover" className="bg-[#091e23]">Pairar / Hover por X seg</option>
+              <option value="none" className="bg-[#091e23]">Apenas Navegar (Sem parada)</option>
             </select>
           </div>
         </div>
 
         <div>
-          <label className="block text-[10px] text-[#888899] mb-1 font-mono uppercase">
+          <label className="block text-[10px] text-[#7ca5ad] mb-1 font-mono uppercase">
             Orientação do Drone (Heading)
           </label>
           <select
@@ -368,28 +368,28 @@ export const FlightConfigPanel: React.FC<FlightConfigPanelProps> = ({
                 headingMode: e.target.value as 'followWayline' | 'manually' | 'fixed',
               })
             }
-            className="w-full bg-[#0a0a0c] border border-[#ffffff15] rounded-xl px-3 py-2 text-xs text-white focus:border-cyan-500 focus:outline-none"
+            className="w-full bg-[#061518] border border-[#143f47] rounded-2xl px-3 py-2 text-xs text-white focus:border-[#00f59b] focus:outline-none"
           >
-            <option value="followWayline">Acompanhar Trajetória (Follow Wayline - Padrão)</option>
-            <option value="manually">Controle Manual pelo Piloto</option>
-            <option value="fixed">Ângulo Fixo Personalizado</option>
+            <option value="followWayline" className="bg-[#091e23]">Acompanhar Trajetória (Follow Wayline - Padrão)</option>
+            <option value="manually" className="bg-[#091e23]">Controle Manual pelo Piloto</option>
+            <option value="fixed" className="bg-[#091e23]">Ângulo Fixo Personalizado</option>
           </select>
         </div>
       </div>
 
       {/* 5. Safety & Finish Actions */}
-      <div className="bg-[#111115] border border-[#ffffff10] rounded-2xl p-5 shadow-sm">
+      <div className="bg-[#091e23] border border-[#143f47] rounded-3xl p-5 shadow-sm">
         <div className="flex items-center justify-between mb-3">
-          <h3 className="text-[10px] font-bold text-[#666677] uppercase tracking-widest flex items-center gap-1.5">
-            <ShieldAlert className="w-3.5 h-3.5 text-cyan-400" />
+          <h3 className="text-[10px] font-bold text-[#6f969d] uppercase tracking-widest flex items-center gap-1.5">
+            <ShieldAlert className="w-3.5 h-3.5 text-[#00f59b]" />
             <span>Segurança & Finalização</span>
           </h3>
-          <span className="text-[10px] font-mono text-green-400">FAILSAFE</span>
+          <span className="text-[10px] font-mono text-[#00f59b] font-bold">FAILSAFE</span>
         </div>
 
         <div className="grid grid-cols-2 gap-3">
           <div>
-            <label className="block text-[10px] text-[#888899] mb-1 font-mono uppercase">
+            <label className="block text-[10px] text-[#7ca5ad] mb-1 font-mono uppercase">
               Ao Concluir Missão
             </label>
             <select
@@ -400,17 +400,17 @@ export const FlightConfigPanel: React.FC<FlightConfigPanelProps> = ({
                   finishAction: e.target.value as 'goHome' | 'noAction' | 'autoLand' | 'gotoFirstWaypoint',
                 })
               }
-              className="w-full bg-[#0a0a0c] border border-[#ffffff15] rounded-xl px-3 py-2 text-xs text-white focus:border-cyan-500 focus:outline-none"
+              className="w-full bg-[#061518] border border-[#143f47] rounded-2xl px-3 py-2 text-xs text-white focus:border-[#00f59b] focus:outline-none"
             >
-              <option value="goHome">Retornar ao Home (RTH Automático)</option>
-              <option value="gotoFirstWaypoint">Ir para o 1º Waypoint</option>
-              <option value="noAction">Pairar no Último Ponto (Hover)</option>
-              <option value="autoLand">Pouso Automático</option>
+              <option value="goHome" className="bg-[#091e23]">Retornar ao Home (RTH Automático)</option>
+              <option value="gotoFirstWaypoint" className="bg-[#091e23]">Ir para o 1º Waypoint</option>
+              <option value="noAction" className="bg-[#091e23]">Pairar no Último Ponto (Hover)</option>
+              <option value="autoLand" className="bg-[#091e23]">Pouso Automático</option>
             </select>
           </div>
 
           <div>
-            <label className="block text-[10px] text-[#888899] mb-1 font-mono uppercase">
+            <label className="block text-[10px] text-[#7ca5ad] mb-1 font-mono uppercase">
               Altura Decolagem (m)
             </label>
             <div className="relative">
@@ -421,9 +421,9 @@ export const FlightConfigPanel: React.FC<FlightConfigPanelProps> = ({
                 max="100"
                 value={settings.takeoffSecurityHeight}
                 onChange={(e) => onChangeSettings({ takeoffSecurityHeight: Number(e.target.value) })}
-                className="w-full bg-[#0a0a0c] border border-[#ffffff15] rounded-xl px-3 py-2 text-xs text-white font-mono focus:border-cyan-500 focus:outline-none"
+                className="w-full bg-[#061518] border border-[#143f47] rounded-2xl px-3 py-2 text-xs text-white font-mono focus:border-[#00f59b] focus:outline-none"
               />
-              <span className="absolute right-3 top-2 text-xs text-[#666]">m</span>
+              <span className="absolute right-3 top-2 text-xs text-[#6f969d]">m</span>
             </div>
           </div>
         </div>

@@ -110,11 +110,11 @@ export const ExportModal: React.FC<ExportModalProps> = ({
 
   return (
     <div className="fixed inset-0 z-[2000] flex items-center justify-center p-4 bg-black/85 backdrop-blur-md animate-fadeIn">
-      <div className="bg-[#111115] border border-[#ffffff15] rounded-3xl w-full max-w-3xl max-h-[90vh] flex flex-col shadow-2xl overflow-hidden text-[#e0e0e0]">
+      <div className="bg-[#091e23] border border-[#143f47] rounded-3xl w-full max-w-3xl max-h-[90vh] flex flex-col shadow-2xl overflow-hidden text-[#e2edf0]">
         {/* Modal Header */}
-        <div className="flex items-center justify-between px-6 py-4 border-b border-[#ffffff10] bg-[#0a0a0c]/80">
+        <div className="flex items-center justify-between px-6 py-4 border-b border-[#143f47]/60 bg-[#061518]/90">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-cyan-500/10 text-cyan-400 rounded-xl border border-cyan-500/25 flex items-center justify-center">
+            <div className="w-10 h-10 bg-[#00f59b]/10 text-[#00f59b] rounded-2xl border border-[#00f59b]/30 flex items-center justify-center">
               <Download className="w-5 h-5" />
             </div>
             <div>
@@ -122,11 +122,11 @@ export const ExportModal: React.FC<ExportModalProps> = ({
                 <h3 className="text-base font-bold text-white tracking-tight">
                   Exportar Plano de Voo DJI
                 </h3>
-                <span className="text-[10px] font-mono bg-cyan-500/20 text-cyan-300 px-2 py-0.5 rounded-full border border-cyan-500/30">
+                <span className="text-[10px] font-mono bg-[#00f59b]/15 text-[#00f59b] px-2 py-0.5 rounded-full border border-[#00f59b]/40 font-bold">
                   WPML READY
                 </span>
               </div>
-              <p className="text-xs text-[#888899] font-mono">
+              <p className="text-xs text-[#7ca5ad] font-mono">
                 {waypoints.length} WAYPOINTS • MOTOR DJI WPML V1.0.3
               </p>
             </div>
@@ -134,14 +134,14 @@ export const ExportModal: React.FC<ExportModalProps> = ({
 
           <div className="flex items-center gap-2">
             {/* Tab Navigation */}
-            <div className="flex items-center bg-[#0a0a0c] border border-[#ffffff10] rounded-xl p-1 text-xs">
+            <div className="flex items-center bg-[#092329] border border-[#143f47] rounded-2xl p-1 text-xs">
               <button
                 id="tab-btn-download"
                 onClick={() => setActiveTab('download')}
-                className={`px-3 py-1.5 rounded-lg font-semibold transition ${
+                className={`px-3 py-1.5 rounded-xl font-semibold transition cursor-pointer ${
                   activeTab === 'download'
-                    ? 'bg-white text-black font-bold'
-                    : 'text-[#888] hover:text-white'
+                    ? 'bg-[#00f59b] text-black font-bold'
+                    : 'text-[#82aab2] hover:text-white'
                 }`}
               >
                 Downloads
@@ -149,10 +149,10 @@ export const ExportModal: React.FC<ExportModalProps> = ({
               <button
                 id="tab-btn-code"
                 onClick={() => setActiveTab('code')}
-                className={`px-3 py-1.5 rounded-lg font-semibold transition ${
+                className={`px-3 py-1.5 rounded-xl font-semibold transition cursor-pointer ${
                   activeTab === 'code'
-                    ? 'bg-white text-black font-bold'
-                    : 'text-[#888] hover:text-white'
+                    ? 'bg-[#00f59b] text-black font-bold'
+                    : 'text-[#82aab2] hover:text-white'
                 }`}
               >
                 Inspecionar Código
@@ -160,10 +160,10 @@ export const ExportModal: React.FC<ExportModalProps> = ({
               <button
                 id="tab-btn-tutorial"
                 onClick={() => setActiveTab('tutorial')}
-                className={`px-3 py-1.5 rounded-lg font-semibold transition ${
+                className={`px-3 py-1.5 rounded-xl font-semibold transition cursor-pointer ${
                   activeTab === 'tutorial'
-                    ? 'bg-white text-black font-bold'
-                    : 'text-[#888] hover:text-white'
+                    ? 'bg-[#00f59b] text-black font-bold'
+                    : 'text-[#82aab2] hover:text-white'
                 }`}
               >
                 Como Usar no Controle
@@ -172,7 +172,7 @@ export const ExportModal: React.FC<ExportModalProps> = ({
 
             <button
               onClick={onClose}
-              className="p-2 text-[#666] hover:text-white rounded-lg hover:bg-[#1f1f26] transition"
+              className="p-2 text-[#6f969d] hover:text-white rounded-xl hover:bg-[#0c262d] transition cursor-pointer"
             >
               <X className="w-4 h-4" />
             </button>
@@ -186,19 +186,19 @@ export const ExportModal: React.FC<ExportModalProps> = ({
             <div className="space-y-4">
               {/* Google Sheets Spotlight Card */}
               {onOpenGoogleSheets && (
-                <div className="bg-gradient-to-r from-emerald-950/40 via-[#0a0a0c] to-emerald-950/20 border border-emerald-500/40 rounded-2xl p-4 flex flex-wrap items-center justify-between gap-3 shadow-lg">
+                <div className="bg-[#061518] border border-emerald-500/40 rounded-3xl p-4 flex flex-wrap items-center justify-between gap-3 shadow-lg">
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-xl bg-emerald-500/20 border border-emerald-500/40 text-emerald-400 flex items-center justify-center">
+                    <div className="w-10 h-10 rounded-2xl bg-emerald-500/20 border border-emerald-500/40 text-emerald-300 flex items-center justify-center">
                       <FileSpreadsheet className="w-5 h-5" />
                     </div>
                     <div>
                       <h4 className="text-sm font-bold text-white flex items-center gap-2">
                         <span>Exportar Relatório para Google Planilhas</span>
                         <span className="bg-emerald-500/20 text-emerald-300 text-[10px] font-mono font-bold px-2 py-0.2 rounded border border-emerald-500/30">
-                          NOVO
+                          ONLINE
                         </span>
                       </h4>
-                      <p className="text-xs text-[#888899]">
+                      <p className="text-xs text-[#7ca5ad]">
                         Gere uma planilha no Google Sheets com resumo operacional, especificações do drone e tabela de waypoints formatada.
                       </p>
                     </div>
@@ -210,7 +210,7 @@ export const ExportModal: React.FC<ExportModalProps> = ({
                       onClose();
                       onOpenGoogleSheets();
                     }}
-                    className="py-2 px-4 bg-emerald-500 hover:bg-emerald-400 text-black font-bold text-xs rounded-xl flex items-center gap-1.5 transition shadow-md cursor-pointer"
+                    className="py-2 px-4 bg-emerald-500 hover:bg-emerald-400 text-black font-bold text-xs rounded-2xl flex items-center gap-1.5 transition shadow-md cursor-pointer"
                   >
                     <FileSpreadsheet className="w-3.5 h-3.5" />
                     <span>Abrir Google Planilhas</span>
@@ -220,25 +220,25 @@ export const ExportModal: React.FC<ExportModalProps> = ({
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {/* 1. Official DJI WPML KMZ */}
-                <div className="bg-[#0a0a0c] border-2 border-cyan-500/40 hover:border-cyan-400 rounded-2xl p-5 flex flex-col justify-between transition group shadow-lg relative overflow-hidden">
+                <div className="bg-[#061518] border-2 border-[#00f59b]/40 hover:border-[#00f59b] rounded-3xl p-5 flex flex-col justify-between transition group shadow-lg relative overflow-hidden">
                   <div
-                    className="absolute top-0 right-0 w-32 h-32 opacity-10 pointer-events-none"
+                    className="absolute top-0 right-0 w-32 h-32 opacity-15 pointer-events-none"
                     style={{
-                      backgroundImage: 'radial-gradient(#06b6d4 1px, transparent 1px)',
+                      backgroundImage: 'radial-gradient(#00f59b 1px, transparent 1px)',
                       backgroundSize: '12px 12px',
                     }}
                   />
                   <div>
                     <div className="flex items-center justify-between mb-2">
-                      <span className="bg-cyan-500/20 text-cyan-300 text-[10px] font-bold font-mono px-2.5 py-0.5 rounded-full border border-cyan-500/40">
+                      <span className="bg-[#00f59b]/15 text-[#00f59b] text-[10px] font-bold font-mono px-2.5 py-0.5 rounded-full border border-[#00f59b]/40">
                         ⭐ PILOT 2 OFICIAL
                       </span>
-                      <span className="text-xs font-mono text-cyan-400">.KMZ (WPML)</span>
+                      <span className="text-xs font-mono text-[#00f59b]">.KMZ (WPML)</span>
                     </div>
-                    <h4 className="text-base font-bold text-white group-hover:text-cyan-400 transition">
+                    <h4 className="text-base font-bold text-white group-hover:text-[#00f59b] transition">
                       DJI Pilot 2 WPML (.kmz)
                     </h4>
-                    <p className="text-xs text-[#888899] mt-1.5 leading-relaxed">
+                    <p className="text-xs text-[#7ca5ad] mt-1.5 leading-relaxed">
                       Pacote zipado contendo <code>template.kml</code> e <code>waylines.wpml</code>. Pronto para DJI Mavic 3 Enterprise, M30, M300/M350 RTK e DJI RC Pro.
                     </p>
                   </div>
@@ -246,7 +246,7 @@ export const ExportModal: React.FC<ExportModalProps> = ({
                     id="btn-download-kmz-primary"
                     onClick={handleDownloadKmz}
                     disabled={isGeneratingKmz}
-                    className="mt-5 w-full py-3 px-4 bg-white hover:bg-cyan-400 text-black font-bold text-xs uppercase tracking-tight rounded-xl flex items-center justify-center gap-2 shadow-md transition disabled:opacity-50"
+                    className="mt-5 w-full py-3 px-4 bg-[#00f59b] hover:bg-[#00df8c] text-black font-bold text-xs uppercase tracking-tight rounded-2xl flex items-center justify-center gap-2 shadow-md transition disabled:opacity-50 cursor-pointer"
                   >
                     <Download className="w-4 h-4" />
                     <span>{isGeneratingKmz ? 'Gerando KMZ...' : 'Baixar KMZ DJI Pilot 2'}</span>
@@ -254,51 +254,51 @@ export const ExportModal: React.FC<ExportModalProps> = ({
                 </div>
 
                 {/* 2. Standalone WPML KML */}
-                <div className="bg-[#0a0a0c] border border-[#ffffff10] hover:border-[#ffffff20] rounded-2xl p-5 flex flex-col justify-between transition shadow-md">
+                <div className="bg-[#061518] border border-[#143f47] hover:border-[#00f59b]/40 rounded-3xl p-5 flex flex-col justify-between transition shadow-md">
                   <div>
                     <div className="flex items-center justify-between mb-2">
-                      <span className="bg-[#ffffff05] text-[#aaa] text-[10px] font-mono px-2.5 py-0.5 rounded-full border border-[#ffffff10]">
+                      <span className="bg-[#092329] text-[#82aab2] text-[10px] font-mono px-2.5 py-0.5 rounded-full border border-[#143f47]">
                         DIRETO
                       </span>
-                      <span className="text-xs font-mono text-[#888]">.KML</span>
+                      <span className="text-xs font-mono text-[#7ca5ad]">.KML</span>
                     </div>
                     <h4 className="text-base font-bold text-white">
                       DJI WPML Template (.kml)
                     </h4>
-                    <p className="text-xs text-[#888899] mt-1.5 leading-relaxed">
+                    <p className="text-xs text-[#7ca5ad] mt-1.5 leading-relaxed">
                       Arquivo KML com namespace oficial WPML (<code>xmlns:wpml</code>) para importação direta de plano no DJI Pilot 2.
                     </p>
                   </div>
                   <button
                     id="btn-download-wpml-kml"
                     onClick={handleDownloadWpmlKml}
-                    className="mt-5 w-full py-3 px-4 bg-[#181820] hover:bg-[#22222c] text-white font-semibold text-xs rounded-xl flex items-center justify-center gap-2 border border-[#ffffff10] transition"
+                    className="mt-5 w-full py-3 px-4 bg-[#092329] hover:bg-[#0c262d] text-white font-semibold text-xs rounded-2xl flex items-center justify-center gap-2 border border-[#143f47] transition cursor-pointer"
                   >
-                    <FileCode className="w-4 h-4 text-cyan-400" />
+                    <FileCode className="w-4 h-4 text-[#00f59b]" />
                     <span>Baixar WPML .KML</span>
                   </button>
                 </div>
 
                 {/* 3. Standard DJI KML */}
-                <div className="bg-[#0a0a0c] border border-[#ffffff10] hover:border-[#ffffff20] rounded-2xl p-5 flex flex-col justify-between transition shadow-md">
+                <div className="bg-[#061518] border border-[#143f47] hover:border-[#00f59b]/40 rounded-3xl p-5 flex flex-col justify-between transition shadow-md">
                   <div>
                     <div className="flex items-center justify-between mb-2">
-                      <span className="bg-[#ffffff05] text-[#aaa] text-[10px] font-mono px-2.5 py-0.5 rounded-full border border-[#ffffff10]">
+                      <span className="bg-[#092329] text-[#82aab2] text-[10px] font-mono px-2.5 py-0.5 rounded-full border border-[#143f47]">
                         TERRA & EARTH
                       </span>
-                      <span className="text-xs font-mono text-[#888]">.KML</span>
+                      <span className="text-xs font-mono text-[#7ca5ad]">.KML</span>
                     </div>
                     <h4 className="text-base font-bold text-white">
                       DJI Terra / Standard KML (.kml)
                     </h4>
-                    <p className="text-xs text-[#888899] mt-1.5 leading-relaxed">
+                    <p className="text-xs text-[#7ca5ad] mt-1.5 leading-relaxed">
                       Compatível com DJI Terra, DJI GS Pro, DJI Pilot 1 e visualização no Google Earth Pro com placemarks e coordenadas.
                     </p>
                   </div>
                   <button
                     id="btn-download-standard-kml"
                     onClick={handleDownloadStandardKml}
-                    className="mt-5 w-full py-3 px-4 bg-[#181820] hover:bg-[#22222c] text-white font-semibold text-xs rounded-xl flex items-center justify-center gap-2 border border-[#ffffff10] transition"
+                    className="mt-5 w-full py-3 px-4 bg-[#092329] hover:bg-[#0c262d] text-white font-semibold text-xs rounded-2xl flex items-center justify-center gap-2 border border-[#143f47] transition cursor-pointer"
                   >
                     <Layers className="w-4 h-4 text-amber-400" />
                     <span>Baixar Standard KML</span>
@@ -306,27 +306,27 @@ export const ExportModal: React.FC<ExportModalProps> = ({
                 </div>
 
                 {/* 4. Litchi / DJI Fly CSV */}
-                <div className="bg-[#0a0a0c] border border-[#ffffff10] hover:border-[#ffffff20] rounded-2xl p-5 flex flex-col justify-between transition shadow-md">
+                <div className="bg-[#061518] border border-[#143f47] hover:border-[#00f59b]/40 rounded-3xl p-5 flex flex-col justify-between transition shadow-md">
                   <div>
                     <div className="flex items-center justify-between mb-2">
-                      <span className="bg-[#ffffff05] text-[#aaa] text-[10px] font-mono px-2.5 py-0.5 rounded-full border border-[#ffffff10]">
+                      <span className="bg-[#092329] text-[#82aab2] text-[10px] font-mono px-2.5 py-0.5 rounded-full border border-[#143f47]">
                         MINI & AIR
                       </span>
-                      <span className="text-xs font-mono text-[#888]">.CSV</span>
+                      <span className="text-xs font-mono text-[#7ca5ad]">.CSV</span>
                     </div>
                     <h4 className="text-base font-bold text-white">
                       Litchi / Universal Drone (.csv)
                     </h4>
-                    <p className="text-xs text-[#888899] mt-1.5 leading-relaxed">
+                    <p className="text-xs text-[#7ca5ad] mt-1.5 leading-relaxed">
                       Compatível com Litchi Mission Hub, DJI Mini 4 Pro, Mini 3, Air 3 e controladores com importação CSV.
                     </p>
                   </div>
                   <button
                     id="btn-download-litchi-csv"
                     onClick={handleDownloadLitchiCsv}
-                    className="mt-5 w-full py-3 px-4 bg-[#181820] hover:bg-[#22222c] text-white font-semibold text-xs rounded-xl flex items-center justify-center gap-2 border border-[#ffffff10] transition"
+                    className="mt-5 w-full py-3 px-4 bg-[#092329] hover:bg-[#0c262d] text-white font-semibold text-xs rounded-2xl flex items-center justify-center gap-2 border border-[#143f47] transition cursor-pointer"
                   >
-                    <FileSpreadsheet className="w-4 h-4 text-purple-400" />
+                    <FileSpreadsheet className="w-4 h-4 text-cyan-400" />
                     <span>Baixar CSV Litchi</span>
                   </button>
                 </div>
@@ -341,40 +341,40 @@ export const ExportModal: React.FC<ExportModalProps> = ({
                 <div className="flex items-center gap-1.5 text-xs font-mono">
                   <button
                     onClick={() => setCodeType('template')}
-                    className={`px-3 py-1.5 rounded-lg transition ${
+                    className={`px-3 py-1.5 rounded-xl transition cursor-pointer ${
                       codeType === 'template'
-                        ? 'bg-white text-black font-bold'
-                        : 'bg-[#181820] text-[#888] hover:text-white'
+                        ? 'bg-[#00f59b] text-black font-bold'
+                        : 'bg-[#061518] text-[#82aab2] hover:text-white'
                     }`}
                   >
                     template.kml
                   </button>
                   <button
                     onClick={() => setCodeType('waylines')}
-                    className={`px-3 py-1.5 rounded-lg transition ${
+                    className={`px-3 py-1.5 rounded-xl transition cursor-pointer ${
                       codeType === 'waylines'
-                        ? 'bg-white text-black font-bold'
-                        : 'bg-[#181820] text-[#888] hover:text-white'
+                        ? 'bg-[#00f59b] text-black font-bold'
+                        : 'bg-[#061518] text-[#82aab2] hover:text-white'
                     }`}
                   >
                     waylines.wpml
                   </button>
                   <button
                     onClick={() => setCodeType('standard')}
-                    className={`px-3 py-1.5 rounded-lg transition ${
+                    className={`px-3 py-1.5 rounded-xl transition cursor-pointer ${
                       codeType === 'standard'
-                        ? 'bg-white text-black font-bold'
-                        : 'bg-[#181820] text-[#888] hover:text-white'
+                        ? 'bg-[#00f59b] text-black font-bold'
+                        : 'bg-[#061518] text-[#82aab2] hover:text-white'
                     }`}
                   >
                     Standard KML
                   </button>
                   <button
                     onClick={() => setCodeType('csv')}
-                    className={`px-3 py-1.5 rounded-lg transition ${
+                    className={`px-3 py-1.5 rounded-xl transition cursor-pointer ${
                       codeType === 'csv'
-                        ? 'bg-white text-black font-bold'
-                        : 'bg-[#181820] text-[#888] hover:text-white'
+                        ? 'bg-[#00f59b] text-black font-bold'
+                        : 'bg-[#061518] text-[#82aab2] hover:text-white'
                     }`}
                   >
                     Litchi CSV
@@ -384,23 +384,23 @@ export const ExportModal: React.FC<ExportModalProps> = ({
                 <button
                   id="btn-copy-code"
                   onClick={handleCopyCode}
-                  className="flex items-center gap-1.5 px-3 py-1.5 bg-[#181820] hover:bg-[#22222c] text-xs font-semibold text-white rounded-xl border border-[#ffffff10] transition"
+                  className="flex items-center gap-1.5 px-3 py-1.5 bg-[#061518] hover:bg-[#0c262d] text-xs font-semibold text-white rounded-xl border border-[#143f47] transition cursor-pointer"
                 >
                   {copied ? (
                     <>
-                      <Check className="w-3.5 h-3.5 text-cyan-400" />
-                      <span className="text-cyan-400">Copiado!</span>
+                      <Check className="w-3.5 h-3.5 text-[#00f59b]" />
+                      <span className="text-[#00f59b]">Copiado!</span>
                     </>
                   ) : (
                     <>
-                      <Copy className="w-3.5 h-3.5 text-cyan-400" />
+                      <Copy className="w-3.5 h-3.5 text-[#00f59b]" />
                       <span>Copiar Código</span>
                     </>
                   )}
                 </button>
               </div>
 
-              <div className="relative bg-[#0a0a0c] rounded-2xl border border-[#ffffff10] p-4 max-h-[380px] overflow-auto font-mono text-xs text-cyan-300/90">
+              <div className="relative bg-[#061518] rounded-2xl border border-[#143f47] p-4 max-h-[380px] overflow-auto font-mono text-xs text-[#00f59b]/90">
                 <pre className="whitespace-pre">{getCodeString()}</pre>
               </div>
             </div>
@@ -408,13 +408,13 @@ export const ExportModal: React.FC<ExportModalProps> = ({
 
           {/* TAB 3: TUTORIAL */}
           {activeTab === 'tutorial' && (
-            <div className="space-y-4 text-xs text-[#aaa]">
-              <div className="bg-[#0a0a0c] border border-cyan-500/30 rounded-2xl p-5">
-                <h4 className="font-bold text-sm text-cyan-400 mb-3 flex items-center gap-2">
+            <div className="space-y-4 text-xs text-[#82aab2]">
+              <div className="bg-[#061518] border border-[#00f59b]/30 rounded-3xl p-5">
+                <h4 className="font-bold text-sm text-[#00f59b] mb-3 flex items-center gap-2">
                   <Smartphone className="w-4 h-4" />
                   <span>Como Carregar no DJI Pilot 2 (DJI RC Plus / Smart Controller)</span>
                 </h4>
-                <ol className="space-y-3 list-decimal list-inside leading-relaxed text-[#ccc]">
+                <ol className="space-y-3 list-decimal list-inside leading-relaxed text-[#cde0e3]">
                   <li>
                     Baixe o arquivo <b>.KMZ (WPML)</b> gerado nesta ferramenta.
                   </li>
@@ -423,7 +423,7 @@ export const ExportModal: React.FC<ExportModalProps> = ({
                   </li>
                   <li>
                     Copie o arquivo <code>.kmz</code> para o armazenamento do controle na pasta:
-                    <div className="mt-1.5 bg-[#14141c] p-2.5 rounded-xl border border-[#ffffff15] font-mono text-cyan-400 text-[11px]">
+                    <div className="mt-1.5 bg-[#092329] p-2.5 rounded-xl border border-[#143f47] font-mono text-[#00f59b] text-[11px]">
                       Armazenamento Interno &gt; DJI &gt; com.dji.industry.pilot &gt; FlightRecord
                     </div>
                   </li>
@@ -439,12 +439,12 @@ export const ExportModal: React.FC<ExportModalProps> = ({
                 </ol>
               </div>
 
-              <div className="bg-[#0a0a0c] border border-[#ffffff10] rounded-2xl p-5">
+              <div className="bg-[#061518] border border-[#143f47] rounded-3xl p-5">
                 <h4 className="font-bold text-sm text-white mb-2 flex items-center gap-2">
-                  <HardDrive className="w-4 h-4 text-purple-400" />
+                  <HardDrive className="w-4 h-4 text-cyan-400" />
                   <span>Dica para Drones DJI Mini / Air / Mavic (Litchi / DJI Fly)</span>
                 </h4>
-                <p className="leading-relaxed text-[#888899]">
+                <p className="leading-relaxed text-[#7ca5ad]">
                   Para drones que utilizam o <b>Litchi Mission Hub</b>, baixe o arquivo <b>.CSV</b>, acesse <code>flylitchi.com/hub</code>, clique em <b>Missions &gt; Import CSV</b> e sincronize diretamente com o aplicativo no celular/tablet.
                 </p>
               </div>
@@ -453,12 +453,12 @@ export const ExportModal: React.FC<ExportModalProps> = ({
         </div>
 
         {/* Modal Footer */}
-        <div className="px-6 py-3.5 border-t border-[#ffffff10] bg-[#0a0a0c]/80 flex justify-between items-center text-xs text-[#666] font-mono">
+        <div className="px-6 py-3.5 border-t border-[#143f47]/60 bg-[#061518]/90 flex justify-between items-center text-xs text-[#5e878e] font-mono">
           <span>ENCRYPTED AES-256 PARSER</span>
           <button
             id="btn-close-export-modal"
             onClick={onClose}
-            className="px-5 py-2 bg-[#1f1f26] hover:bg-[#2b2b35] text-white text-xs font-semibold rounded-xl border border-[#ffffff10] transition"
+            className="px-5 py-2 bg-[#092329] hover:bg-[#0c262d] text-white text-xs font-semibold rounded-2xl border border-[#143f47] transition cursor-pointer"
           >
             Fechar
           </button>

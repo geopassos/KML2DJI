@@ -60,18 +60,18 @@ export const DropZone: React.FC<DropZoneProps> = ({
         onDragLeave={handleDragLeave}
         onDrop={handleDrop}
         onClick={() => fileInputRef.current?.click()}
-        className={`lg:col-span-8 bg-[#111115] border rounded-2xl p-6 sm:p-8 relative overflow-hidden flex flex-col items-center justify-center cursor-pointer group transition-all duration-300 ${
+        className={`lg:col-span-8 bg-[#091e23] border rounded-3xl p-6 sm:p-8 relative overflow-hidden flex flex-col items-center justify-center cursor-pointer group transition-all duration-300 ${
           isDragOver
-            ? 'border-cyan-500 bg-cyan-950/20 shadow-lg shadow-cyan-950/50 scale-[1.005]'
-            : 'border-[#ffffff10] hover:border-cyan-500/50 hover:bg-[#15151b]'
+            ? 'border-[#00f59b] bg-[#0d2e35] shadow-lg shadow-[#00f59b]/20 scale-[1.005]'
+            : 'border-[#143f47] hover:border-[#00f59b]/50 hover:bg-[#0c262d]'
         }`}
       >
         {/* Dot Matrix Blueprint Background */}
         <div
-          className="absolute inset-0 opacity-15 pointer-events-none"
+          className="absolute inset-0 opacity-20 pointer-events-none"
           style={{
-            backgroundImage: 'radial-gradient(#06b6d4 0.75px, transparent 0.75px)',
-            backgroundSize: '20px 20px',
+            backgroundImage: 'radial-gradient(#00f59b 0.75px, transparent 0.75px)',
+            backgroundSize: '22px 22px',
           }}
         />
 
@@ -85,48 +85,48 @@ export const DropZone: React.FC<DropZoneProps> = ({
         />
 
         <div className="relative z-10 flex flex-col items-center text-center">
-          <div className="w-16 h-16 bg-cyan-500/10 rounded-2xl flex items-center justify-center mb-4 border border-cyan-500/25 group-hover:border-cyan-500/50 group-hover:scale-105 transition-all">
+          <div className="w-16 h-16 bg-[#00f59b]/10 rounded-2xl flex items-center justify-center mb-4 border border-[#00f59b]/30 group-hover:border-[#00f59b] group-hover:scale-105 transition-all shadow-[0_0_15px_rgba(0,245,155,0.15)]">
             {isLoading ? (
-              <div className="w-7 h-7 border-2 border-cyan-400 border-t-transparent rounded-full animate-spin" />
+              <div className="w-7 h-7 border-2 border-[#00f59b] border-t-transparent rounded-full animate-spin" />
             ) : (
-              <UploadCloud className="w-8 h-8 text-cyan-400" />
+              <UploadCloud className="w-8 h-8 text-[#00f59b]" />
             )}
           </div>
 
           <h2 className="text-lg sm:text-xl font-bold tracking-tight text-white">
-            Importar Arquivo <span className="text-cyan-400 font-mono">.KML</span> ou{' '}
+            Importar Arquivo <span className="text-[#00f59b] font-mono">.KML</span> ou{' '}
             <span className="text-cyan-400 font-mono">.KMZ</span>
           </h2>
-          <p className="text-xs text-[#888899] mt-1.5 max-w-md">
+          <p className="text-xs text-[#7ca5ad] mt-1.5 max-w-md">
             Arraste seu arquivo ou clique para carregar. Conversão instantânea para formato nativo DJI WPML (Pilot 2) e DJI Terra.
           </p>
 
           <div className="mt-5 flex flex-wrap justify-center items-center gap-2">
-            <span className="px-3 py-1 bg-[#ffffff05] border border-[#ffffff10] rounded-lg text-[10px] font-mono text-[#aaaaaa] uppercase tracking-wider">
+            <span className="px-3 py-1 bg-[#061518] border border-[#143f47] rounded-lg text-[10px] font-mono text-[#82aab2] uppercase tracking-wider">
               Google Earth KML
             </span>
-            <span className="px-3 py-1 bg-[#ffffff05] border border-[#ffffff10] rounded-lg text-[10px] font-mono text-cyan-400/90 border-cyan-500/20 uppercase tracking-wider">
+            <span className="px-3 py-1 bg-[#061518] border border-[#00f59b]/30 rounded-lg text-[10px] font-mono text-[#00f59b] uppercase tracking-wider">
               KMZ Comprimido
             </span>
-            <span className="px-3 py-1 bg-[#ffffff05] border border-[#ffffff10] rounded-lg text-[10px] font-mono text-[#aaaaaa] uppercase tracking-wider">
+            <span className="px-3 py-1 bg-[#061518] border border-[#143f47] rounded-lg text-[10px] font-mono text-[#82aab2] uppercase tracking-wider">
               QGIS / AutoCAD
             </span>
-            <span className="px-3 py-1 bg-[#ffffff05] border border-[#ffffff10] rounded-lg text-[10px] font-mono text-[#aaaaaa] uppercase tracking-wider">
+            <span className="px-3 py-1 bg-[#061518] border border-[#143f47] rounded-lg text-[10px] font-mono text-[#82aab2] uppercase tracking-wider">
               Polígonos & Waypoints
             </span>
           </div>
         </div>
       </div>
 
-      {/* Quick Test Samples Bento Card (4 cols) */}
-      <div className="lg:col-span-4 bg-[#111115] border border-[#ffffff10] rounded-2xl p-5 flex flex-col justify-between">
+      {/* Quick Test Samples Card (4 cols) */}
+      <div className="lg:col-span-4 bg-[#091e23] border border-[#143f47] rounded-3xl p-5 flex flex-col justify-between shadow-sm">
         <div>
           <div className="flex items-center justify-between mb-3">
-            <h3 className="text-[10px] font-bold text-[#666677] uppercase tracking-widest flex items-center gap-1.5">
-              <Sparkles className="w-3.5 h-3.5 text-cyan-400" />
+            <h3 className="text-[10px] font-bold text-[#6f969d] uppercase tracking-widest flex items-center gap-1.5">
+              <Sparkles className="w-3.5 h-3.5 text-[#00f59b]" />
               <span>Amostras Pré-Carregadas</span>
             </h3>
-            <span className="text-[10px] font-mono text-cyan-500">1-CLICK TEST</span>
+            <span className="text-[10px] font-mono text-[#00f59b] font-bold">1-CLICK TEST</span>
           </div>
 
           <div className="space-y-2">
@@ -135,15 +135,15 @@ export const DropZone: React.FC<DropZoneProps> = ({
                 key={sample.id}
                 id={`btn-sample-${sample.id}`}
                 onClick={() => onLoadSample(sample)}
-                className="w-full text-left p-3 rounded-xl bg-[#ffffff03] hover:bg-[#ffffff08] border border-[#ffffff08] hover:border-cyan-500/40 transition group"
+                className="w-full text-left p-3 rounded-2xl bg-[#061518] hover:bg-[#0c262d] border border-[#143f47] hover:border-[#00f59b]/40 transition group cursor-pointer"
               >
                 <div className="flex items-center justify-between">
-                  <div className="text-xs font-semibold text-white group-hover:text-cyan-400 transition truncate">
+                  <div className="text-xs font-semibold text-white group-hover:text-[#00f59b] transition truncate">
                     {sample.name}
                   </div>
-                  <ArrowRight className="w-3 h-3 text-[#555] group-hover:text-cyan-400 transition transform group-hover:translate-x-0.5" />
+                  <ArrowRight className="w-3 h-3 text-[#6f969d] group-hover:text-[#00f59b] transition transform group-hover:translate-x-0.5" />
                 </div>
-                <div className="text-[11px] text-[#777788] mt-0.5 line-clamp-1">
+                <div className="text-[11px] text-[#7ca5ad] mt-0.5 line-clamp-1">
                   {sample.description}
                 </div>
               </button>
@@ -151,9 +151,9 @@ export const DropZone: React.FC<DropZoneProps> = ({
           </div>
         </div>
 
-        <div className="mt-4 pt-3 border-t border-[#ffffff08] flex items-center justify-between text-[10px] text-[#666677] font-mono">
+        <div className="mt-4 pt-3 border-t border-[#143f47]/50 flex items-center justify-between text-[10px] text-[#6f969d] font-mono">
           <span>PARSER CLIENT-SIDE</span>
-          <span className="text-green-400">100% LOCAL & SEGURO</span>
+          <span className="text-[#00f59b] font-bold">100% LOCAL & SEGURO</span>
         </div>
       </div>
     </div>

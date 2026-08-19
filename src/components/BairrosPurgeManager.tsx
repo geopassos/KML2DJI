@@ -119,13 +119,12 @@ export const BairrosPurgeManager: React.FC<BairrosPurgeManagerProps> = ({
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
-
-  return (
-    <div className="bg-[#111115] border border-[#ffffff10] rounded-2xl p-5 shadow-sm space-y-4">
+  return (
+    <div className="bg-[#091e23] border border-[#143f47] rounded-3xl p-5 shadow-sm space-y-4 text-[#e2edf0]">
       {/* Header with Purge Explanation */}
-      <div className="flex flex-wrap items-center justify-between gap-3 border-b border-[#ffffff08] pb-4">
+      <div className="flex flex-wrap items-center justify-between gap-3 border-b border-[#143f47]/60 pb-4">
         <div className="flex items-center gap-2.5">
-          <div className="w-8 h-8 rounded-xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400">
+          <div className="w-9 h-9 rounded-2xl bg-[#00f59b]/10 border border-[#00f59b]/30 flex items-center justify-center text-[#00f59b]">
             <Scissors className="w-4 h-4" />
           </div>
           <div>
@@ -133,12 +132,12 @@ export const BairrosPurgeManager: React.FC<BairrosPurgeManagerProps> = ({
               <h3 className="font-bold text-xs uppercase tracking-widest text-white">
                 Extrator & Purificador de Polígonos (Purge DJI)
               </h3>
-              <span className="bg-cyan-500/20 text-cyan-300 text-[10px] font-mono font-bold px-2 py-0.5 rounded-full border border-cyan-500/40">
+              <span className="bg-[#00f59b]/15 text-[#00f59b] text-[10px] font-mono font-bold px-2.5 py-0.5 rounded-full border border-[#00f59b]/40">
                 {geometries.length} {geometries.length === 1 ? 'ELEMENTO' : 'BAIRROS/POLÍGONOS'}
               </span>
             </div>
-            <p className="text-[11px] text-[#888899] mt-0.5">
-              Elimina <code>Style</code>, <code>Schema</code>, <code>ExtendedData</code> e <code>MultiGeometry</code>, gerando o KML mínimo limpo aceito pelo drone.
+            <p className="text-[11px] text-[#7ca5ad] mt-0.5">
+              Elimina <code className="text-[#00f59b]">Style</code>, <code className="text-[#00f59b]">Schema</code>, <code className="text-[#00f59b]">ExtendedData</code> e <code className="text-[#00f59b]">MultiGeometry</code>, gerando o KML mínimo limpo aceito pelo drone.
             </p>
           </div>
         </div>
@@ -149,10 +148,10 @@ export const BairrosPurgeManager: React.FC<BairrosPurgeManagerProps> = ({
             <button
               id="btn-select-all-geoms"
               onClick={onSelectAllGeometries}
-              className={`px-3 py-1.5 rounded-xl text-xs font-semibold border transition flex items-center gap-1.5 ${
+              className={`px-3.5 py-2 rounded-2xl text-xs font-semibold border transition flex items-center gap-1.5 cursor-pointer ${
                 activeGeometryId === null
-                  ? 'bg-cyan-500 text-black border-cyan-400 font-bold'
-                  : 'bg-[#181820] text-[#aaa] border-[#ffffff10] hover:text-white'
+                  ? 'bg-[#00f59b] text-black border-[#00f59b] font-bold shadow-[0_0_12px_rgba(0,245,155,0.3)]'
+                  : 'bg-[#061518] text-[#82aab2] border-[#143f47] hover:text-white hover:bg-[#0c262d]'
               }`}
               title="Mapear todo o arquivo completo junto"
             >
@@ -165,7 +164,7 @@ export const BairrosPurgeManager: React.FC<BairrosPurgeManagerProps> = ({
             <button
               id="btn-open-google-sheets-purge"
               onClick={onOpenGoogleSheets}
-              className="px-3 py-1.5 bg-emerald-500/15 hover:bg-emerald-500/25 text-emerald-400 rounded-xl text-xs font-semibold border border-emerald-500/30 transition flex items-center gap-1.5"
+              className="px-3.5 py-2 bg-emerald-500/15 hover:bg-emerald-500/25 text-emerald-300 rounded-2xl text-xs font-semibold border border-emerald-500/35 transition flex items-center gap-1.5 cursor-pointer"
               title="Exportar dados técnicos para Google Planilhas"
             >
               <FileSpreadsheet className="w-3.5 h-3.5" />
@@ -177,10 +176,10 @@ export const BairrosPurgeManager: React.FC<BairrosPurgeManagerProps> = ({
             id="btn-download-all-purged-zip"
             onClick={handleDownloadAllPurgedZip}
             disabled={isExportingZip}
-            className="px-3 py-1.5 bg-[#181820] hover:bg-[#22222c] text-white rounded-xl text-xs font-semibold border border-[#ffffff10] transition flex items-center gap-1.5 disabled:opacity-50"
+            className="px-3.5 py-2 bg-[#061518] hover:bg-[#0c262d] text-white rounded-2xl text-xs font-semibold border border-[#143f47] transition flex items-center gap-1.5 disabled:opacity-50 cursor-pointer"
             title="Baixar ZIP com KML limpo de cada bairro separado"
           >
-            <FolderArchive className="w-3.5 h-3.5 text-cyan-400" />
+            <FolderArchive className="w-3.5 h-3.5 text-[#00f59b]" />
             <span>Todos KML (.ZIP)</span>
           </button>
 
@@ -188,7 +187,7 @@ export const BairrosPurgeManager: React.FC<BairrosPurgeManagerProps> = ({
             id="btn-download-all-kmz-zip"
             onClick={handleDownloadAllKmzZip}
             disabled={isExportingZip}
-            className="px-3 py-1.5 bg-white hover:bg-cyan-400 text-black rounded-xl text-xs font-bold transition flex items-center gap-1.5 disabled:opacity-50"
+            className="px-4 py-2 bg-[#00f59b] hover:bg-[#00df8c] text-black rounded-2xl text-xs font-bold transition flex items-center gap-1.5 disabled:opacity-50 cursor-pointer shadow-[0_0_15px_rgba(0,245,155,0.25)]"
             title="Baixar ZIP com KMZ Pilot 2 pronto de cada bairro"
           >
             <Download className="w-3.5 h-3.5" />
@@ -199,18 +198,18 @@ export const BairrosPurgeManager: React.FC<BairrosPurgeManagerProps> = ({
 
       {/* Search & Filter Bar */}
       <div className="relative">
-        <Search className="w-4 h-4 text-[#666] absolute left-3.5 top-1/2 -translate-y-1/2" />
+        <Search className="w-4 h-4 text-[#6f969d] absolute left-3.5 top-1/2 -translate-y-1/2" />
         <input
           type="text"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
           placeholder="Buscar bairro ou polígono específico (ex: MURIÇI, CENTRO, CANEQUINHO, LADEIRA)..."
-          className="w-full bg-[#0a0a0c] border border-[#ffffff10] focus:border-cyan-500 text-xs text-white pl-10 pr-4 py-2.5 rounded-xl placeholder-[#555] focus:outline-none font-mono"
+          className="w-full bg-[#061518] border border-[#143f47] focus:border-[#00f59b] text-xs text-white pl-10 pr-4 py-2.5 rounded-2xl placeholder-[#5e878e] focus:outline-none font-mono transition"
         />
         {searchTerm && (
           <button
             onClick={() => setSearchTerm('')}
-            className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-[#666] hover:text-white"
+            className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-[#6f969d] hover:text-white"
           >
             &times;
           </button>
@@ -230,10 +229,10 @@ export const BairrosPurgeManager: React.FC<BairrosPurgeManagerProps> = ({
           return (
             <div
               key={geom.id || idx}
-              className={`p-4 rounded-xl border transition-all flex flex-col justify-between ${
+              className={`p-4 rounded-2xl border transition-all flex flex-col justify-between ${
                 isActive
-                  ? 'bg-cyan-950/30 border-cyan-400 shadow-md ring-1 ring-cyan-500/50'
-                  : 'bg-[#0a0a0c] border-[#ffffff0a] hover:border-[#ffffff20]'
+                  ? 'bg-[#00f59b]/10 border-[#00f59b] shadow-md ring-1 ring-[#00f59b]/50'
+                  : 'bg-[#061518] border-[#143f47]/50 hover:border-[#143f47]'
               }`}
             >
               <div>
@@ -241,25 +240,25 @@ export const BairrosPurgeManager: React.FC<BairrosPurgeManagerProps> = ({
                   <div className="flex items-center gap-2">
                     <span
                       className={`w-2 h-2 rounded-full ${
-                        isActive ? 'bg-cyan-400 animate-pulse' : 'bg-[#444]'
+                        isActive ? 'bg-[#00f59b] animate-pulse' : 'bg-[#1b4d57]'
                       }`}
                     />
                     <h4 className="font-bold text-sm text-white tracking-tight truncate max-w-[200px]">
                       {geom.name || `Bairro ${idx + 1}`}
                     </h4>
                   </div>
-                  <span className="text-[10px] font-mono uppercase bg-[#181820] text-[#aaa] px-2 py-0.5 rounded-md border border-[#ffffff08]">
+                  <span className="text-[10px] font-mono uppercase bg-[#092329] text-[#82aab2] px-2 py-0.5 rounded-md border border-[#143f47]">
                     {geom.type}
                   </span>
                 </div>
 
                 {/* Micro Stats */}
-                <div className="flex items-center gap-3 text-[11px] font-mono text-[#888899] mb-3">
+                <div className="flex items-center gap-3 text-[11px] font-mono text-[#7ca5ad] mb-3">
                   <span>{geom.coordinates.length} pts</span>
                   {areaHa !== null && (
-                    <span className="text-cyan-400 font-semibold">{areaHa.toFixed(2)} ha</span>
+                    <span className="text-[#00f59b] font-semibold">{areaHa.toFixed(2)} ha</span>
                   )}
-                  <span className="text-emerald-400 flex items-center gap-1">
+                  <span className="text-[#00f59b] flex items-center gap-1">
                     <ShieldCheck className="w-3 h-3" />
                     <span>Fechado</span>
                   </span>
@@ -267,13 +266,13 @@ export const BairrosPurgeManager: React.FC<BairrosPurgeManagerProps> = ({
               </div>
 
               {/* Action Buttons for this Specific Bairro */}
-              <div className="flex items-center justify-between gap-2 pt-2 border-t border-[#ffffff08]">
+              <div className="flex items-center justify-between gap-2 pt-2 border-t border-[#143f47]/40">
                 <button
                   onClick={() => onSelectGeometry(geom)}
-                  className={`flex-1 py-1.5 px-2.5 rounded-lg text-xs font-semibold flex items-center justify-center gap-1.5 transition ${
+                  className={`flex-1 py-1.5 px-2.5 rounded-xl text-xs font-semibold flex items-center justify-center gap-1.5 transition cursor-pointer ${
                     isActive
-                      ? 'bg-cyan-500 text-black font-bold'
-                      : 'bg-[#181820] hover:bg-[#22222a] text-white'
+                      ? 'bg-[#00f59b] text-black font-bold'
+                      : 'bg-[#092329] hover:bg-[#0c2e35] text-white'
                   }`}
                   title="Focar este bairro e gerar plano de voo"
                 >
@@ -283,7 +282,7 @@ export const BairrosPurgeManager: React.FC<BairrosPurgeManagerProps> = ({
 
                 <button
                   onClick={() => handleDownloadSinglePurgedKml(geom)}
-                  className="p-1.5 bg-[#181820] hover:bg-[#22222a] text-cyan-400 hover:text-cyan-300 rounded-lg border border-[#ffffff08] transition"
+                  className="p-1.5 bg-[#092329] hover:bg-[#0c2e35] text-[#00f59b] hover:text-white rounded-xl border border-[#143f47] transition cursor-pointer"
                   title="Baixar KML mínimo purificado (sem Style/Schema)"
                 >
                   <Download className="w-3.5 h-3.5" />
@@ -291,7 +290,7 @@ export const BairrosPurgeManager: React.FC<BairrosPurgeManagerProps> = ({
 
                 <button
                   onClick={() => setInspectGeom(geom)}
-                  className="p-1.5 bg-[#181820] hover:bg-[#22222a] text-[#888] hover:text-white rounded-lg border border-[#ffffff08] transition"
+                  className="p-1.5 bg-[#092329] hover:bg-[#0c2e35] text-[#82aab2] hover:text-white rounded-xl border border-[#143f47] transition cursor-pointer"
                   title="Inspecionar código XML limpo"
                 >
                   <Eye className="w-3.5 h-3.5" />
@@ -304,33 +303,33 @@ export const BairrosPurgeManager: React.FC<BairrosPurgeManagerProps> = ({
 
       {/* Code Inspector Modal for a Single Purged Bairro */}
       {inspectGeom && (
-        <div className="fixed inset-0 z-[2500] flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-fadeIn">
-          <div className="bg-[#111115] border border-[#ffffff15] rounded-2xl w-full max-w-xl shadow-2xl overflow-hidden">
-            <div className="flex items-center justify-between px-5 py-3.5 border-b border-[#ffffff10] bg-[#0a0a0c]">
+        <div className="fixed inset-0 z-[2500] flex items-center justify-center p-4 bg-black/85 backdrop-blur-md animate-fadeIn">
+          <div className="bg-[#091e23] border border-[#143f47] rounded-3xl w-full max-w-xl shadow-2xl overflow-hidden">
+            <div className="flex items-center justify-between px-5 py-3.5 border-b border-[#143f47] bg-[#061518]">
               <div className="flex items-center gap-2 font-mono text-xs text-white">
-                <FileCode className="w-4 h-4 text-cyan-400" />
+                <FileCode className="w-4 h-4 text-[#00f59b]" />
                 <span>KML MÍNIMO PURGADO — {inspectGeom.name}</span>
               </div>
               <button
                 onClick={() => setInspectGeom(null)}
-                className="text-[#666] hover:text-white text-base"
+                className="text-[#6f969d] hover:text-white text-base cursor-pointer"
               >
                 &times;
               </button>
             </div>
 
-            <div className="p-4 bg-[#0a0a0c] max-h-[320px] overflow-auto font-mono text-[11px] text-cyan-300">
+            <div className="p-4 bg-[#061518] max-h-[320px] overflow-auto font-mono text-[11px] text-[#00f59b]">
               <pre className="whitespace-pre">{generateMinimalPurgedKml(inspectGeom)}</pre>
             </div>
 
-            <div className="p-3.5 border-t border-[#ffffff10] bg-[#111115] flex justify-between items-center">
-              <span className="text-[10px] text-[#666] font-mono">ESTRUTURA 100% LIMPA DJI</span>
+            <div className="p-3.5 border-t border-[#143f47] bg-[#091e23] flex justify-between items-center">
+              <span className="text-[10px] text-[#6f969d] font-mono">ESTRUTURA 100% LIMPA DJI</span>
               <div className="flex items-center gap-2">
                 <button
                   onClick={handleCopyInspectedCode}
-                  className="px-3 py-1.5 bg-[#181820] hover:bg-[#22222c] text-white text-xs font-semibold rounded-lg border border-[#ffffff10] flex items-center gap-1.5"
+                  className="px-3 py-1.5 bg-[#061518] hover:bg-[#0c262d] text-white text-xs font-semibold rounded-xl border border-[#143f47] flex items-center gap-1.5 cursor-pointer"
                 >
-                  {copied ? <Check className="w-3 h-3 text-cyan-400" /> : <Copy className="w-3 h-3" />}
+                  {copied ? <Check className="w-3 h-3 text-[#00f59b]" /> : <Copy className="w-3 h-3" />}
                   <span>{copied ? 'Copiado!' : 'Copiar'}</span>
                 </button>
                 <button
@@ -338,7 +337,7 @@ export const BairrosPurgeManager: React.FC<BairrosPurgeManagerProps> = ({
                     handleDownloadSinglePurgedKml(inspectGeom);
                     setInspectGeom(null);
                   }}
-                  className="px-4 py-1.5 bg-white hover:bg-cyan-400 text-black text-xs font-bold rounded-lg flex items-center gap-1.5"
+                  className="px-4 py-1.5 bg-[#00f59b] hover:bg-[#00df8c] text-black text-xs font-bold rounded-xl flex items-center gap-1.5 cursor-pointer"
                 >
                   <Download className="w-3 h-3" />
                   <span>Baixar .KML</span>

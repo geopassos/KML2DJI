@@ -158,11 +158,11 @@ export const GoogleSheetsExportModal: React.FC<GoogleSheetsExportModalProps> = (
 
   return (
     <div className="fixed inset-0 z-[2200] flex items-center justify-center p-4 bg-black/85 backdrop-blur-md animate-fadeIn font-sans">
-      <div className="bg-[#111115] border border-[#ffffff15] rounded-3xl w-full max-w-2xl max-h-[90vh] flex flex-col shadow-2xl overflow-hidden text-[#e0e0e0]">
+      <div className="bg-[#091e23] border border-[#143f47] rounded-3xl w-full max-w-2xl max-h-[90vh] flex flex-col shadow-2xl overflow-hidden text-[#e2edf0]">
         {/* Header */}
-        <div className="flex items-center justify-between px-6 py-4 border-b border-[#ffffff10] bg-[#0a0a0c]/90">
+        <div className="flex items-center justify-between px-6 py-4 border-b border-[#143f47]/60 bg-[#061518]/90">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-emerald-500/10 text-emerald-400 rounded-xl border border-emerald-500/25 flex items-center justify-center">
+            <div className="w-10 h-10 bg-emerald-500/15 text-emerald-300 rounded-2xl border border-emerald-500/35 flex items-center justify-center">
               <FileSpreadsheet className="w-5 h-5" />
             </div>
             <div>
@@ -174,7 +174,7 @@ export const GoogleSheetsExportModal: React.FC<GoogleSheetsExportModalProps> = (
                   GOOGLE SHEETS API
                 </span>
               </div>
-              <p className="text-xs text-[#888899]">
+              <p className="text-xs text-[#7ca5ad]">
                 Gere relatórios técnicos estruturados de voo diretamente na sua conta Google Drive
               </p>
             </div>
@@ -182,7 +182,7 @@ export const GoogleSheetsExportModal: React.FC<GoogleSheetsExportModalProps> = (
 
           <button
             onClick={onClose}
-            className="p-2 text-[#666] hover:text-white rounded-lg hover:bg-[#1f1f26] transition"
+            className="p-2 text-[#6f969d] hover:text-white rounded-xl hover:bg-[#0c262d] transition cursor-pointer"
           >
             <X className="w-4 h-4" />
           </button>
@@ -191,7 +191,7 @@ export const GoogleSheetsExportModal: React.FC<GoogleSheetsExportModalProps> = (
         {/* Modal Body */}
         <div className="p-6 overflow-y-auto flex-1 space-y-5">
           {/* User Auth Status Banner */}
-          <div className="flex flex-wrap items-center justify-between gap-3 p-3.5 rounded-2xl bg-[#0a0a0c] border border-[#ffffff08]">
+          <div className="flex flex-wrap items-center justify-between gap-3 p-3.5 rounded-2xl bg-[#061518] border border-[#143f47]">
             <div className="flex items-center gap-2.5">
               {currentUser ? (
                 <>
@@ -214,11 +214,11 @@ export const GoogleSheetsExportModal: React.FC<GoogleSheetsExportModalProps> = (
                         Conectado
                       </span>
                     </div>
-                    <span className="text-[11px] text-[#777] font-mono">{currentUser.email}</span>
+                    <span className="text-[11px] text-[#7ca5ad] font-mono">{currentUser.email}</span>
                   </div>
                 </>
               ) : (
-                <div className="text-xs text-[#aaa]">
+                <div className="text-xs text-[#82aab2]">
                   <span className="text-white font-medium">Conta Google: </span>
                   Conecte sua conta para salvar as planilhas no seu Google Drive.
                 </div>
@@ -229,7 +229,7 @@ export const GoogleSheetsExportModal: React.FC<GoogleSheetsExportModalProps> = (
               {currentUser ? (
                 <button
                   onClick={handleLogout}
-                  className="flex items-center gap-1.5 px-3 py-1.5 text-xs text-[#888] hover:text-rose-400 rounded-xl hover:bg-[#181820] transition border border-transparent hover:border-[#ffffff10]"
+                  className="flex items-center gap-1.5 px-3 py-1.5 text-xs text-[#82aab2] hover:text-rose-400 rounded-xl hover:bg-[#0c262d] transition border border-transparent hover:border-[#143f47] cursor-pointer"
                 >
                   <LogOut className="w-3.5 h-3.5" />
                   <span>Desconectar</span>
@@ -263,7 +263,7 @@ export const GoogleSheetsExportModal: React.FC<GoogleSheetsExportModalProps> = (
 
           {/* Error message */}
           {errorMessage && (
-            <div className="p-3 bg-rose-950/40 border border-rose-500/40 rounded-xl text-rose-300 text-xs flex items-center gap-2">
+            <div className="p-3 bg-rose-950/40 border border-rose-500/40 rounded-2xl text-rose-300 text-xs flex items-center gap-2">
               <AlertCircle className="w-4 h-4 shrink-0" />
               <span>{errorMessage}</span>
             </div>
@@ -271,7 +271,7 @@ export const GoogleSheetsExportModal: React.FC<GoogleSheetsExportModalProps> = (
 
           {/* Success Banner when Exported */}
           {exportResult && (
-            <div className="p-4 bg-emerald-950/40 border border-emerald-500/40 rounded-2xl space-y-3 animate-fadeIn">
+            <div className="p-4 bg-emerald-950/40 border border-emerald-500/40 rounded-3xl space-y-3 animate-fadeIn">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
                   <CheckCircle2 className="w-5 h-5 text-emerald-400 shrink-0" />
@@ -287,7 +287,7 @@ export const GoogleSheetsExportModal: React.FC<GoogleSheetsExportModalProps> = (
                   href={exportResult.spreadsheetUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex-1 py-2.5 px-4 bg-emerald-500 hover:bg-emerald-400 text-black font-bold text-xs rounded-xl flex items-center justify-center gap-1.5 transition shadow-lg"
+                  className="flex-1 py-2.5 px-4 bg-emerald-500 hover:bg-emerald-400 text-black font-bold text-xs rounded-2xl flex items-center justify-center gap-1.5 transition shadow-lg cursor-pointer"
                 >
                   <span>Abrir no Google Planilhas</span>
                   <ExternalLink className="w-3.5 h-3.5" />
@@ -295,9 +295,9 @@ export const GoogleSheetsExportModal: React.FC<GoogleSheetsExportModalProps> = (
 
                 <button
                   onClick={handleCopyLink}
-                  className="py-2.5 px-4 bg-[#181820] hover:bg-[#22222c] text-white text-xs font-semibold rounded-xl border border-[#ffffff10] flex items-center gap-1.5 transition"
+                  className="py-2.5 px-4 bg-[#061518] hover:bg-[#0c262d] text-white text-xs font-semibold rounded-2xl border border-[#143f47] flex items-center gap-1.5 transition cursor-pointer"
                 >
-                  {copied ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
+                  {copied ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5 text-emerald-400" />}
                   <span>{copied ? 'Link Copiado!' : 'Copiar Link'}</span>
                 </button>
               </div>
@@ -305,29 +305,29 @@ export const GoogleSheetsExportModal: React.FC<GoogleSheetsExportModalProps> = (
           )}
 
           {/* Preview of what will be exported */}
-          <div className="bg-[#0a0a0c] border border-[#ffffff08] rounded-2xl p-4 space-y-3">
-            <h4 className="text-xs font-bold uppercase tracking-widest text-[#888899] flex items-center gap-2">
-              <Table className="w-3.5 h-3.5 text-cyan-400" />
+          <div className="bg-[#061518] border border-[#143f47] rounded-3xl p-4 space-y-3">
+            <h4 className="text-xs font-bold uppercase tracking-widest text-[#6f969d] flex items-center gap-2">
+              <Table className="w-3.5 h-3.5 text-[#00f59b]" />
               <span>O que será gerado na planilha para os operadores de drone:</span>
             </h4>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
-              <div className="p-3 bg-[#111115] rounded-xl border border-[#ffffff08] space-y-1.5">
+              <div className="p-3.5 bg-[#092329] rounded-2xl border border-[#143f47]/60 space-y-1.5">
                 <div className="flex items-center gap-1.5 text-emerald-400 font-bold">
                   <Database className="w-3.5 h-3.5" />
                   <span>Aba 1: Resumo da Missão</span>
                 </div>
-                <p className="text-[11px] text-[#888] leading-relaxed">
+                <p className="text-[11px] text-[#7ca5ad] leading-relaxed">
                   Nome da missão, modelo do drone ({settings.dronePresetKey.toUpperCase()}), altitude ({settings.flightAltitude}m AGL), velocidade, pitch do gimbal ({settings.gimbalPitch}°), estimativa de fotos (~{summary.estimatedPhotos}) e cálculo de baterias ({summary.estimatedBatteries} packs).
                 </p>
               </div>
 
-              <div className="p-3 bg-[#111115] rounded-xl border border-[#ffffff08] space-y-1.5">
-                <div className="flex items-center gap-1.5 text-cyan-400 font-bold">
+              <div className="p-3.5 bg-[#092329] rounded-2xl border border-[#143f47]/60 space-y-1.5">
+                <div className="flex items-center gap-1.5 text-[#00f59b] font-bold">
                   <Layers className="w-3.5 h-3.5" />
                   <span>Aba 2: Waypoints & Coordenadas</span>
                 </div>
-                <p className="text-[11px] text-[#888] leading-relaxed">
+                <p className="text-[11px] text-[#7ca5ad] leading-relaxed">
                   Tabela completa de {waypoints.length} waypoints com latitude e longitude decimais de alta precisão (WGS-84), velocidades individuais, elevação e comandos de disparo.
                 </p>
               </div>
@@ -340,7 +340,7 @@ export const GoogleSheetsExportModal: React.FC<GoogleSheetsExportModalProps> = (
               id="btn-export-active-sheet"
               onClick={handleExportActiveMission}
               disabled={isExporting || waypoints.length === 0}
-              className="w-full py-3.5 px-5 bg-white hover:bg-emerald-400 text-black font-bold text-xs uppercase tracking-tight rounded-2xl shadow-xl flex items-center justify-center gap-2 transition disabled:opacity-40"
+              className="w-full py-3.5 px-5 bg-[#00f59b] hover:bg-[#00df8c] text-black font-extrabold text-xs uppercase tracking-tight rounded-2xl shadow-xl flex items-center justify-center gap-2 transition disabled:opacity-40 cursor-pointer shadow-[0_0_15px_rgba(0,245,155,0.25)]"
             >
               {isExporting ? (
                 <>
@@ -349,7 +349,7 @@ export const GoogleSheetsExportModal: React.FC<GoogleSheetsExportModalProps> = (
                 </>
               ) : (
                 <>
-                  <FileSpreadsheet className="w-4 h-4 text-emerald-600" />
+                  <FileSpreadsheet className="w-4 h-4 text-black" />
                   <span>Exportar Missão Ativa para Google Planilhas</span>
                 </>
               )}
@@ -360,7 +360,7 @@ export const GoogleSheetsExportModal: React.FC<GoogleSheetsExportModalProps> = (
                 id="btn-export-all-bairros-sheet"
                 onClick={handleExportAllBairros}
                 disabled={isExporting}
-                className="w-full py-3 px-5 bg-[#181820] hover:bg-[#22222c] text-white font-semibold text-xs rounded-2xl border border-[#ffffff10] flex items-center justify-center gap-2 transition disabled:opacity-40"
+                className="w-full py-3 px-5 bg-[#061518] hover:bg-[#0c262d] text-white font-semibold text-xs rounded-2xl border border-[#143f47] flex items-center justify-center gap-2 transition disabled:opacity-40 cursor-pointer"
               >
                 <Layers className="w-4 h-4 text-cyan-400" />
                 <span>Exportar Todos os {geometries.length} Bairros Consolidados (Multi-Abas)</span>
@@ -370,11 +370,11 @@ export const GoogleSheetsExportModal: React.FC<GoogleSheetsExportModalProps> = (
         </div>
 
         {/* Footer */}
-        <div className="px-6 py-3.5 border-t border-[#ffffff10] bg-[#0a0a0c]/80 flex justify-between items-center text-xs text-[#666] font-mono">
+        <div className="px-6 py-3.5 border-t border-[#143f47]/60 bg-[#061518]/90 flex justify-between items-center text-xs text-[#5e878e] font-mono">
           <span>GOOGLE SPREADSHEETS V4 API</span>
           <button
             onClick={onClose}
-            className="px-4 py-2 bg-[#1f1f26] hover:bg-[#2b2b35] text-white text-xs font-semibold rounded-xl border border-[#ffffff10] transition"
+            className="px-4 py-2 bg-[#092329] hover:bg-[#0c262d] text-white text-xs font-semibold rounded-2xl border border-[#143f47] transition cursor-pointer"
           >
             Fechar
           </button>

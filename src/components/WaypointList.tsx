@@ -82,11 +82,11 @@ export const WaypointList: React.FC<WaypointListProps> = ({
   const maxAlt = altitudes.length > 0 ? Math.max(...altitudes, 100) : 100;
 
   return (
-    <div className="bg-[#111115] border border-[#ffffff10] rounded-2xl p-5 shadow-sm space-y-4">
+    <div className="bg-[#091e23] border border-[#143f47] rounded-3xl p-5 shadow-sm space-y-4 text-[#e2edf0]">
       {/* Header & Actions */}
-      <div className="flex flex-wrap items-center justify-between gap-2 border-b border-[#ffffff08] pb-3">
+      <div className="flex flex-wrap items-center justify-between gap-2 border-b border-[#143f47]/60 pb-3">
         <div className="flex items-center gap-2">
-          <ListOrdered className="w-4 h-4 text-cyan-400" />
+          <ListOrdered className="w-4 h-4 text-[#00f59b]" />
           <span className="font-bold text-xs uppercase tracking-widest text-white">
             Waypoints da Rota ({waypoints.length} pts)
           </span>
@@ -97,10 +97,10 @@ export const WaypointList: React.FC<WaypointListProps> = ({
             id="btn-invert-route"
             onClick={handleInvertDirection}
             disabled={waypoints.length < 2}
-            className="flex items-center gap-1.5 px-3 py-1.5 text-xs bg-[#1e1e24] hover:bg-[#282832] disabled:opacity-40 text-slate-300 rounded-xl border border-[#ffffff08] transition"
+            className="flex items-center gap-1.5 px-3 py-1.5 text-xs bg-[#061518] hover:bg-[#0c262d] disabled:opacity-40 text-[#7ca5ad] hover:text-white rounded-2xl border border-[#143f47] transition cursor-pointer"
             title="Inverter ordem dos pontos (início vira fim)"
           >
-            <ArrowUpDown className="w-3.5 h-3.5 text-cyan-400" />
+            <ArrowUpDown className="w-3.5 h-3.5 text-[#00f59b]" />
             <span className="text-[11px] font-mono">Inverter</span>
           </button>
 
@@ -108,9 +108,9 @@ export const WaypointList: React.FC<WaypointListProps> = ({
             id="btn-bulk-alt"
             onClick={() => setShowBulkModal(!showBulkModal)}
             disabled={waypoints.length === 0}
-            className="flex items-center gap-1.5 px-3 py-1.5 text-xs bg-[#1e1e24] hover:bg-[#282832] disabled:opacity-40 text-slate-300 rounded-xl border border-[#ffffff08] transition"
+            className="flex items-center gap-1.5 px-3 py-1.5 text-xs bg-[#061518] hover:bg-[#0c262d] disabled:opacity-40 text-[#7ca5ad] hover:text-white rounded-2xl border border-[#143f47] transition cursor-pointer"
           >
-            <TrendingUp className="w-3.5 h-3.5 text-cyan-400" />
+            <TrendingUp className="w-3.5 h-3.5 text-[#00f59b]" />
             <span className="text-[11px] font-mono">Altitudes</span>
           </button>
         </div>
@@ -118,20 +118,20 @@ export const WaypointList: React.FC<WaypointListProps> = ({
 
       {/* Bulk Altitude Bar */}
       {showBulkModal && (
-        <div className="flex items-center gap-2 bg-[#0a0a0c] p-3 rounded-xl border border-cyan-500/30 animate-fadeIn">
-          <span className="text-xs text-[#aaa]">Definir todas altitudes:</span>
+        <div className="flex items-center gap-2 bg-[#061518] p-3 rounded-2xl border border-[#00f59b]/40 animate-fadeIn">
+          <span className="text-xs text-[#7ca5ad]">Definir todas altitudes:</span>
           <input
             id="input-bulk-altitude"
             type="number"
             value={bulkAltitude}
             onChange={(e) => setBulkAltitude(Number(e.target.value))}
-            className="w-20 bg-[#16161c] border border-[#ffffff20] rounded-lg px-2.5 py-1 text-xs text-cyan-400 font-mono font-bold focus:border-cyan-500 focus:outline-none"
+            className="w-20 bg-[#091e23] border border-[#143f47] rounded-xl px-2.5 py-1 text-xs text-[#00f59b] font-mono font-bold focus:border-[#00f59b] focus:outline-none"
           />
-          <span className="text-xs text-[#666]">m</span>
+          <span className="text-xs text-[#6f969d]">m</span>
           <button
             id="btn-apply-bulk-alt"
             onClick={handleApplyBulkAltitude}
-            className="px-3 py-1 bg-white hover:bg-cyan-400 text-black font-bold text-xs rounded-lg transition flex items-center gap-1"
+            className="px-3 py-1 bg-[#00f59b] hover:bg-[#00df8c] text-black font-bold text-xs rounded-xl transition flex items-center gap-1 cursor-pointer"
           >
             <Check className="w-3.5 h-3.5" />
             <span>Aplicar</span>
@@ -141,13 +141,13 @@ export const WaypointList: React.FC<WaypointListProps> = ({
 
       {/* Altitude Profile SVG Graph */}
       {waypoints.length > 1 && (
-        <div className="bg-[#0a0a0c] border border-[#ffffff08] rounded-xl p-3.5">
-          <div className="flex justify-between items-center text-[10px] font-mono text-[#777] mb-2">
+        <div className="bg-[#061518] border border-[#143f47]/60 rounded-2xl p-3.5">
+          <div className="flex justify-between items-center text-[10px] font-mono text-[#6f969d] mb-2">
             <span className="flex items-center gap-1.5 uppercase tracking-wider">
-              <TrendingUp className="w-3.5 h-3.5 text-cyan-400" />
+              <TrendingUp className="w-3.5 h-3.5 text-[#00f59b]" />
               <span>Perfil de Altitude (AGL)</span>
             </span>
-            <span className="text-cyan-400 font-bold">
+            <span className="text-[#00f59b] font-bold">
               MIN: {Math.min(...altitudes)}m | MAX: {Math.max(...altitudes)}m
             </span>
           </div>
@@ -155,14 +155,14 @@ export const WaypointList: React.FC<WaypointListProps> = ({
           <div className="h-16 w-full relative flex items-end">
             <svg className="w-full h-full overflow-visible">
               {/* Background grid lines */}
-              <line x1="0" y1="20%" x2="100%" y2="20%" stroke="#1f1f26" strokeDasharray="2,2" />
-              <line x1="0" y1="50%" x2="100%" y2="50%" stroke="#1f1f26" strokeDasharray="2,2" />
-              <line x1="0" y1="80%" x2="100%" y2="80%" stroke="#1f1f26" strokeDasharray="2,2" />
+              <line x1="0" y1="20%" x2="100%" y2="20%" stroke="#0d262d" strokeDasharray="2,2" />
+              <line x1="0" y1="50%" x2="100%" y2="50%" stroke="#0d262d" strokeDasharray="2,2" />
+              <line x1="0" y1="80%" x2="100%" y2="80%" stroke="#0d262d" strokeDasharray="2,2" />
 
               {/* Polyline of altitudes */}
               <polyline
                 fill="none"
-                stroke="#06b6d4"
+                stroke="#00f59b"
                 strokeWidth="2"
                 points={waypoints
                   .map((wp, idx) => {
@@ -189,8 +189,8 @@ export const WaypointList: React.FC<WaypointListProps> = ({
                     cx={`${x}%`}
                     cy={`${y}%`}
                     r={isSelected ? '5' : '3'}
-                    fill={isSelected ? '#ffffff' : '#06b6d4'}
-                    stroke="#0a0a0c"
+                    fill={isSelected ? '#ffffff' : '#00f59b'}
+                    stroke="#061518"
                     strokeWidth="1.5"
                     className="cursor-pointer transition-all hover:r-5"
                     onClick={() => onSelectWaypoint && onSelectWaypoint(wp.id)}
@@ -205,9 +205,9 @@ export const WaypointList: React.FC<WaypointListProps> = ({
       )}
 
       {/* Waypoints Scrollable Table */}
-      <div className="overflow-x-auto max-h-[360px] overflow-y-auto rounded-xl border border-[#ffffff08] bg-[#0a0a0c]">
+      <div className="overflow-x-auto max-h-[360px] overflow-y-auto rounded-2xl border border-[#143f47]/60 bg-[#061518]">
         <table className="w-full text-left text-xs font-mono">
-          <thead className="bg-[#111115] sticky top-0 z-10 text-[#666] font-bold uppercase tracking-wider border-b border-[#ffffff08] text-[10px]">
+          <thead className="bg-[#092329] sticky top-0 z-10 text-[#7ca5ad] font-bold uppercase tracking-wider border-b border-[#143f47]/60 text-[10px]">
             <tr>
               <th className="py-2.5 px-3">#</th>
               <th className="py-2.5 px-3">Coordenadas</th>
@@ -218,7 +218,7 @@ export const WaypointList: React.FC<WaypointListProps> = ({
               <th className="py-2.5 px-2 text-right">Ação</th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-[#ffffff05]">
+          <tbody className="divide-y divide-[#143f47]/30">
             {waypoints.map((wp, idx) => {
               const isSelected = selectedWaypointId === wp.id;
               const isFirst = idx === 0;
@@ -227,32 +227,32 @@ export const WaypointList: React.FC<WaypointListProps> = ({
                 <tr
                   key={wp.id || idx}
                   onClick={() => onSelectWaypoint && onSelectWaypoint(wp.id)}
-                  className={`hover:bg-[#16161d] cursor-pointer transition ${
-                    isSelected ? 'bg-cyan-950/30 border-l-2 border-cyan-400' : ''
+                  className={`hover:bg-[#0c262d] cursor-pointer transition ${
+                    isSelected ? 'bg-[#00f59b]/10 border-l-2 border-[#00f59b]' : ''
                   }`}
                 >
                   <td className="py-2 px-3">
                     <span
                       className={`inline-flex items-center justify-center w-5 h-5 rounded-full text-[10px] font-bold ${
                         isFirst
-                          ? 'bg-cyan-500 text-black font-mono'
-                          : 'bg-[#222228] text-slate-300'
+                          ? 'bg-[#00f59b] text-black font-mono shadow-[0_0_8px_rgba(0,245,155,0.4)]'
+                          : 'bg-[#092329] text-[#82aab2] border border-[#143f47]'
                       }`}
                     >
                       {isFirst ? 'H' : idx + 1}
                     </span>
                   </td>
-                  <td className="py-2 px-3 text-[#aaa]">
-                    <span className="text-[#666]">Lat:</span> {wp.lat.toFixed(6)}
+                  <td className="py-2 px-3 text-[#82aab2]">
+                    <span className="text-[#5e878e]">Lat:</span> {wp.lat.toFixed(6)}
                     <br />
-                    <span className="text-[#666]">Lng:</span> {wp.lng.toFixed(6)}
+                    <span className="text-[#5e878e]">Lng:</span> {wp.lng.toFixed(6)}
                   </td>
                   <td className="py-2 px-3" onClick={(e) => e.stopPropagation()}>
                     <input
                       type="number"
                       value={wp.alt || defaultAltitude}
                       onChange={(e) => handleUpdateField(idx, 'alt', Number(e.target.value))}
-                      className="w-16 bg-[#16161c] border border-[#ffffff15] rounded px-1.5 py-1 text-xs text-cyan-400 font-bold focus:border-cyan-500 text-center focus:outline-none"
+                      className="w-16 bg-[#091e23] border border-[#143f47] rounded-lg px-1.5 py-1 text-xs text-[#00f59b] font-bold focus:border-[#00f59b] text-center focus:outline-none"
                     />
                   </td>
                   <td className="py-2 px-3" onClick={(e) => e.stopPropagation()}>
@@ -261,14 +261,14 @@ export const WaypointList: React.FC<WaypointListProps> = ({
                       step="0.5"
                       value={wp.speed || 8}
                       onChange={(e) => handleUpdateField(idx, 'speed', Number(e.target.value))}
-                      className="w-14 bg-[#16161c] border border-[#ffffff15] rounded px-1.5 py-1 text-xs text-white focus:border-cyan-500 text-center focus:outline-none"
+                      className="w-14 bg-[#091e23] border border-[#143f47] rounded-lg px-1.5 py-1 text-xs text-white focus:border-[#00f59b] text-center focus:outline-none"
                     />
                   </td>
                   <td className="py-2 px-3" onClick={(e) => e.stopPropagation()}>
                     <select
                       value={wp.gimbalPitch ?? -90}
                       onChange={(e) => handleUpdateField(idx, 'gimbalPitch', Number(e.target.value))}
-                      className="bg-[#16161c] border border-[#ffffff15] rounded px-1 py-1 text-[11px] text-white focus:outline-none"
+                      className="bg-[#091e23] border border-[#143f47] rounded-lg px-1 py-1 text-[11px] text-white focus:outline-none"
                     >
                       <option value="-90">-90°</option>
                       <option value="-60">-60°</option>
@@ -280,7 +280,7 @@ export const WaypointList: React.FC<WaypointListProps> = ({
                     <select
                       value={wp.action || 'takePhoto'}
                       onChange={(e) => handleUpdateField(idx, 'action', e.target.value)}
-                      className="bg-[#16161c] border border-[#ffffff15] rounded px-1 py-1 text-[11px] text-white focus:outline-none font-sans"
+                      className="bg-[#091e23] border border-[#143f47] rounded-lg px-1 py-1 text-[11px] text-white focus:outline-none font-sans"
                     >
                       <option value="takePhoto">📸 Foto</option>
                       <option value="hover">⏱️ Hover</option>
@@ -291,7 +291,7 @@ export const WaypointList: React.FC<WaypointListProps> = ({
                     <button
                       onClick={() => handleDelete(idx)}
                       disabled={waypoints.length <= 1}
-                      className="p-1 hover:text-rose-400 text-[#555] disabled:opacity-20 transition"
+                      className="p-1 hover:text-rose-400 text-[#5e878e] disabled:opacity-20 transition cursor-pointer"
                       title="Excluir Waypoint"
                     >
                       <Trash2 className="w-3.5 h-3.5" />

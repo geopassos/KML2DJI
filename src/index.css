@@ -1,31 +1,52 @@
 @import "tailwindcss";
 
 @layer utilities {
-  .bg-bento-dot {
-    background-image: radial-gradient(rgba(56, 189, 248, 0.12) 1px, transparent 1px);
+  .bg-cockpit-canvas {
+    background-color: #061316;
+  }
+  .bg-cockpit-card {
+    background-color: #0a1e23;
+  }
+  .bg-cockpit-sidebar {
+    background-color: #092329;
+  }
+  .border-cockpit {
+    border-color: rgba(20, 184, 166, 0.18);
+  }
+  .border-cockpit-glow {
+    border-color: rgba(0, 245, 155, 0.35);
+  }
+  .text-cockpit-neon {
+    color: #00f59b;
+  }
+  .text-cockpit-muted {
+    color: #78a3aa;
+  }
+  .bg-cockpit-dot {
+    background-image: radial-gradient(rgba(6, 182, 212, 0.15) 1px, transparent 1px);
     background-size: 20px 20px;
   }
-  .bg-bento-grid {
-    background-image: linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-                      linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  .bg-cockpit-grid {
+    background-image: linear-gradient(to right, rgba(20, 184, 166, 0.05) 1px, transparent 1px),
+                      linear-gradient(to bottom, rgba(20, 184, 166, 0.05) 1px, transparent 1px);
     background-size: 24px 24px;
   }
 }
 
-/* Custom scrollbars for Bento panels */
+/* Custom scrollbars for Cockpit panels */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #0a0a0c;
+  background: #061316;
 }
 ::-webkit-scrollbar-thumb {
-  background: #27272a;
+  background: #12343b;
   border-radius: 9999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #3f3f46;
+  background: #1b4d57;
 }
 
 /* Google Sign-in Button Styles */

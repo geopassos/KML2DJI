@@ -261,30 +261,40 @@ export const MapViewer: React.FC<MapViewerProps> = ({
     <div className="relative w-full h-full min-h-[440px] rounded-2xl overflow-hidden border border-[#ffffff10] bg-[#111115] shadow-lg flex-1">
       {/* Leaflet Map Div */}
       <div ref={mapContainerRef} className="w-full h-full z-0" />
-
-      {/* Top Left Controls: Layer & Visibility Switchers */}
-      <div className="absolute top-3 left-3 z-[1000] flex flex-wrap gap-2">
-        {/* Basemap Selector */}
-        <div className="flex items-center bg-[#111115]/90 backdrop-blur-md border border-[#ffffff15] rounded-xl p-1 shadow-lg">
-          <Layers className="w-3.5 h-3.5 text-[#777] ml-1 mr-1.5" />
+      {/* Flight Path Polyline & Marker Style Config */}
+      {/* Top Left: Basemap Layer Switcher */}
+      <div className="absolute top-3 left-3 z-[1000] flex flex-wrap items-center gap-2">
+        {/* Basemaps */}
+        <div className="flex items-center bg-[#092329]/95 backdrop-blur-md border border-[#143f47] rounded-2xl p-1 shadow-lg text-xs">
           <button
             id="btn-basemap-satellite"
             onClick={() => setActiveBaseLayer('satellite')}
-            className={`px-2.5 py-1 text-xs font-semibold rounded-lg transition-colors ${
+            className={`px-3 py-1.5 text-xs font-semibold rounded-xl transition-all cursor-pointer ${
               activeBaseLayer === 'satellite'
-                ? 'bg-white text-black font-bold shadow'
-                : 'text-[#aaa] hover:text-white hover:bg-[#222228]'
+                ? 'bg-[#00f59b] text-black font-bold shadow'
+                : 'text-[#82aab2] hover:text-white hover:bg-[#0c262d]'
             }`}
           >
-            Satélite HD
+            Satélite
+          </button>
+          <button
+            id="btn-basemap-dark"
+            onClick={() => setActiveBaseLayer('dark')}
+            className={`px-3 py-1.5 text-xs font-semibold rounded-xl transition-all cursor-pointer ${
+              activeBaseLayer === 'dark'
+                ? 'bg-[#00f59b] text-black font-bold shadow'
+                : 'text-[#82aab2] hover:text-white hover:bg-[#0c262d]'
+            }`}
+          >
+            Cockpit Dark
           </button>
           <button
             id="btn-basemap-street"
             onClick={() => setActiveBaseLayer('street')}
-            className={`px-2.5 py-1 text-xs font-semibold rounded-lg transition-colors ${
+            className={`px-3 py-1.5 text-xs font-semibold rounded-xl transition-all cursor-pointer ${
               activeBaseLayer === 'street'
-                ? 'bg-white text-black font-bold shadow'
-                : 'text-[#aaa] hover:text-white hover:bg-[#222228]'
+                ? 'bg-[#00f59b] text-black font-bold shadow'
+                : 'text-[#82aab2] hover:text-white hover:bg-[#0c262d]'
             }`}
           >
             Mapa
@@ -292,10 +302,10 @@ export const MapViewer: React.FC<MapViewerProps> = ({
           <button
             id="btn-basemap-topo"
             onClick={() => setActiveBaseLayer('topo')}
-            className={`px-2.5 py-1 text-xs font-semibold rounded-lg transition-colors ${
+            className={`px-3 py-1.5 text-xs font-semibold rounded-xl transition-all cursor-pointer ${
               activeBaseLayer === 'topo'
-                ? 'bg-white text-black font-bold shadow'
-                : 'text-[#aaa] hover:text-white hover:bg-[#222228]'
+                ? 'bg-[#00f59b] text-black font-bold shadow'
+                : 'text-[#82aab2] hover:text-white hover:bg-[#0c262d]'
             }`}
           >
             Relevo
@@ -303,12 +313,12 @@ export const MapViewer: React.FC<MapViewerProps> = ({
         </div>
 
         {/* Toggle Overlays */}
-        <div className="flex items-center bg-[#111115]/90 backdrop-blur-md border border-[#ffffff15] rounded-xl p-1 shadow-lg text-xs">
+        <div className="flex items-center bg-[#092329]/95 backdrop-blur-md border border-[#143f47] rounded-2xl p-1 shadow-lg text-xs">
           <button
             id="btn-toggle-flight-path"
             onClick={() => setShowFlightPath(!showFlightPath)}
-            className={`flex items-center gap-1.5 px-2.5 py-1 rounded-lg transition-colors font-medium ${
-              showFlightPath ? 'text-cyan-400 bg-cyan-950/40' : 'text-[#777] hover:text-slate-200'
+            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl transition-all font-medium cursor-pointer ${
+              showFlightPath ? 'text-[#00f59b] bg-[#00f59b]/15 border border-[#00f59b]/30' : 'text-[#6f969d] hover:text-white'
             }`}
             title="Exibir/Ocultar Rota de Voo DJI"
           >
@@ -320,8 +330,8 @@ export const MapViewer: React.FC<MapViewerProps> = ({
             <button
               id="btn-toggle-original-geom"
               onClick={() => setShowOriginalGeom(!showOriginalGeom)}
-              className={`flex items-center gap-1.5 px-2.5 py-1 rounded-lg transition-colors font-medium ${
-                showOriginalGeom ? 'text-amber-400 bg-amber-950/40' : 'text-[#777] hover:text-slate-200'
+              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl transition-all font-medium cursor-pointer ${
+                showOriginalGeom ? 'text-amber-400 bg-amber-950/40 border border-amber-500/30' : 'text-[#6f969d] hover:text-white'
               }`}
               title="Exibir/Ocultar Perímetro Original KML"
             >
@@ -337,26 +347,26 @@ export const MapViewer: React.FC<MapViewerProps> = ({
         <button
           id="btn-recenter-map"
           onClick={handleFitBounds}
-          className="flex items-center gap-1.5 px-3 py-1.5 bg-[#111115]/90 hover:bg-[#1a1a22] backdrop-blur-md border border-[#ffffff15] text-xs font-semibold text-slate-200 hover:text-white rounded-xl shadow-lg transition"
+          className="flex items-center gap-1.5 px-3.5 py-2 bg-[#092329]/95 hover:bg-[#0c262d] backdrop-blur-md border border-[#143f47] text-xs font-semibold text-[#82aab2] hover:text-white rounded-2xl shadow-lg transition cursor-pointer"
           title="Centralizar e ajustar zoom na rota"
         >
-          <Maximize2 className="w-3.5 h-3.5 text-cyan-400" />
+          <Maximize2 className="w-3.5 h-3.5 text-[#00f59b]" />
           <span>Enquadrar</span>
         </button>
       </div>
 
       {/* Bottom Map Legend */}
-      <div className="absolute bottom-3 left-3 z-[1000] hidden sm:flex items-center gap-3 bg-[#111115]/90 backdrop-blur-md px-3.5 py-1.5 rounded-xl border border-[#ffffff15] text-[11px] text-[#aaa] shadow-md font-mono">
+      <div className="absolute bottom-3 left-3 z-[1000] hidden sm:flex items-center gap-3 bg-[#092329]/95 backdrop-blur-md px-3.5 py-1.5 rounded-2xl border border-[#143f47] text-[11px] text-[#82aab2] shadow-md font-mono">
         <div className="flex items-center gap-1.5">
-          <span className="w-2.5 h-2.5 rounded-full bg-amber-500 inline-block"></span>
+          <span className="w-2.5 h-2.5 rounded-full bg-amber-500 inline-block shadow-[0_0_6px_rgba(245,158,11,0.5)]"></span>
           <span>Home</span>
         </div>
         <div className="flex items-center gap-1.5">
-          <span className="w-2.5 h-2.5 rounded-full bg-cyan-400 inline-block"></span>
+          <span className="w-2.5 h-2.5 rounded-full bg-[#00f59b] inline-block shadow-[0_0_6px_rgba(0,245,155,0.5)]"></span>
           <span>Waypoint</span>
         </div>
         <div className="flex items-center gap-1.5">
-          <span className="w-3 h-0.5 bg-cyan-500 inline-block"></span>
+          <span className="w-3 h-0.5 bg-[#00f59b] inline-block"></span>
           <span>Trajetória</span>
         </div>
         {geometries.length > 0 && (
