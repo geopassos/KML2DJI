@@ -153,9 +153,9 @@ export const MapViewer: React.FC<MapViewerProps> = ({
       const flightLatLngs = waypoints.map((w) => [w.lat, w.lng] as [number, number]);
       flightLatLngs.forEach((ll) => bounds.extend(ll));
 
-      // Flight Polyline
+      // Flight Polyline (Neon Green - matches legend)
       const flightLine = L.polyline(flightLatLngs, {
-        color: '#06b6d4', // Electric Cyan
+        color: '#00f59b',
         weight: 3,
         opacity: 0.95,
       });
@@ -172,12 +172,12 @@ export const MapViewer: React.FC<MapViewerProps> = ({
           <div class="relative flex items-center justify-center cursor-pointer transform transition-transform hover:scale-125">
             <div class="w-7 h-7 rounded-full flex items-center justify-center font-bold text-xs shadow-lg border-2 ${
               isFirst
-                ? 'bg-amber-500 border-white text-slate-950 ring-4 ring-amber-500/40'
+                ? 'bg-amber-500 border-white text-slate-950 ring-4 ring-amber-500/40 shadow-[0_0_10px_rgba(245,158,11,0.5)]'
                 : isLast
-                ? 'bg-rose-500 border-white text-white'
+                ? 'bg-rose-500 border-white text-white shadow-[0_0_10px_rgba(244,63,94,0.5)]'
                 : isSelected
-                ? 'bg-white border-cyan-400 text-slate-950 ring-4 ring-cyan-400/50'
-                : 'bg-cyan-500 border-black text-black'
+                ? 'bg-white border-[#00f59b] text-slate-950 ring-4 ring-[#00f59b]/50 shadow-[0_0_12px_rgba(0,245,155,0.7)]'
+                : 'bg-[#00f59b] border-black text-black font-extrabold shadow-[0_0_8px_rgba(0,245,155,0.4)]'
             }">
               ${isFirst ? 'H' : idx + 1}
             </div>
@@ -258,7 +258,7 @@ export const MapViewer: React.FC<MapViewerProps> = ({
   };
 
   return (
-    <div className="relative w-full h-full min-h-[440px] rounded-2xl overflow-hidden border border-[#ffffff10] bg-[#111115] shadow-lg flex-1">
+    <div className="relative w-full h-full min-h-[440px] rounded-3xl overflow-hidden border border-[#143f47] bg-[#091e23] shadow-2xl flex-1">
       {/* Leaflet Map Div */}
       <div ref={mapContainerRef} className="w-full h-full z-0" />
       {/* Flight Path Polyline & Marker Style Config */}

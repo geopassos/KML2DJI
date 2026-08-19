@@ -427,16 +427,12 @@ export default function App() {
               </div>
             </div>
 
-            {/* Top Search, Date and Actions */}
+            {/* Top Engine Status, Date and Actions */}
             <div className="flex items-center gap-2.5 sm:gap-3 flex-wrap">
-              {/* Search Pill */}
-              <div className="hidden lg:flex items-center gap-2 bg-[#092329] border border-[#143f47] rounded-full px-3.5 py-1.5 text-xs text-[#82aab2] focus-within:border-[#00f59b] transition-all">
-                <Search className="w-3.5 h-3.5 text-[#6f969d]" />
-                <input
-                  type="text"
-                  placeholder="Buscar waypoint, bairro..."
-                  className="bg-transparent border-none outline-none text-xs text-white placeholder-[#6f969d] w-36 focus:w-48 transition-all font-sans"
-                />
+              {/* Cockpit Engine Status Badge */}
+              <div className="hidden lg:flex items-center gap-2 bg-[#092329] border border-[#143f47] rounded-full px-3.5 py-1.5 text-[11px] font-mono text-[#82aab2]">
+                <span className="w-2 h-2 rounded-full bg-[#00f59b] inline-block animate-pulse shadow-[0_0_8px_rgba(0,245,155,0.8)]" />
+                <span>DJI WPML ENGINE • WGS-84</span>
               </div>
 
               {/* Quick Date Pill */}
@@ -593,41 +589,42 @@ export default function App() {
             isLoading={isLoading}
           />
 
-          {/* Bairros / Polygons Purge Manager (When file contains geometries) */}
-          {geometries.length > 0 && (
-            <BairrosPurgeManager
-              geometries={geometries}
-              activeGeometryId={activeGeometryId}
-              onSelectGeometry={handleSelectSpecificGeometry}
-              onSelectAllGeometries={handleSelectAllGeometries}
-              onOpenGoogleSheets={() => setIsGoogleSheetsModalOpen(true)}
-              settings={settings}
-              fileName={uploadedFileName || undefined}
-            />
-          )}
-
           {/* Core 2-Column Working Area */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-4">
-            {/* Left Column: Config Panel & Waypoint List (5 cols) */}
+            {/* Left Column: Config Panel, Bairros Purge & Waypoint List (5 cols) */}
             <div className="lg:col-span-5 space-y-4">
               {/* Panel Tab Switcher */}
               <div className="flex items-center bg-[#092329] border border-[#143f47] rounded-2xl p-1 text-xs">
                 <button
                   id="tab-btn-flight-config"
                   onClick={() => setActiveLeftTab('config')}
-                  className={`flex-1 flex items-center justify-center gap-2 py-2.5 px-3 rounded-xl font-bold transition ${
+                  className={`flex-1 flex items-center justify-center gap-1.5 py-2.5 px-2 rounded-xl font-bold transition cursor-pointer ${
                     activeLeftTab === 'config'
                       ? 'bg-[#00f59b] text-black shadow-md'
                       : 'text-[#7ca5ad] hover:text-white'
                   }`}
                 >
                   <Sliders className="w-3.5 h-3.5" />
-                  <span>Configurações DJI</span>
+                  <span>Configurações</span>
                 </button>
+                {geometries.length > 0 && (
+                  <button
+                    id="tab-btn-bairros"
+                    onClick={() => setActiveLeftTab('bairros')}
+                    className={`flex-1 flex items-center justify-center gap-1.5 py-2.5 px-2 rounded-xl font-bold transition cursor-pointer ${
+                      activeLeftTab === 'bairros'
+                        ? 'bg-[#00f59b] text-black shadow-md'
+                        : 'text-[#7ca5ad] hover:text-white'
+                    }`}
+                  >
+                    <Layers className="w-3.5 h-3.5" />
+                    <span>Bairros ({geometries.length})</span>
+                  </button>
+                )}
                 <button
                   id="tab-btn-waypoint-table"
                   onClick={() => setActiveLeftTab('waypoints')}
-                  className={`flex-1 flex items-center justify-center gap-2 py-2.5 px-3 rounded-xl font-bold transition ${
+                  className={`flex-1 flex items-center justify-center gap-1.5 py-2.5 px-2 rounded-xl font-bold transition cursor-pointer ${
                     activeLeftTab === 'waypoints'
                       ? 'bg-[#00f59b] text-black shadow-md'
                       : 'text-[#7ca5ad] hover:text-white'
@@ -639,7 +636,7 @@ export default function App() {
               </div>
 
               {/* Active Tab Panel */}
-              {activeLeftTab === 'config' ? (
+              {activeLeftTab === 'config' && (
                 <FlightConfigPanel
                   settings={settings}
                   onChangeSettings={handleUpdateSettings}
@@ -648,7 +645,19 @@ export default function App() {
                   onResetWaypoints={handleResetWaypoints}
                   isGridActive={isGridActive}
                 />
-              ) : (
+              )}
+              {activeLeftTab === 'bairros' && geometries.length > 0 && (
+                <BairrosPurgeManager
+                  geometries={geometries}
+                  activeGeometryId={activeGeometryId}
+                  onSelectGeometry={handleSelectSpecificGeometry}
+                  onSelectAllGeometries={handleSelectAllGeometries}
+                  onOpenGoogleSheets={() => setIsGoogleSheetsModalOpen(true)}
+                  settings={settings}
+                  fileName={uploadedFileName || undefined}
+                />
+              )}
+              {(activeLeftTab === 'waypoints' || (activeLeftTab === 'bairros' && geometries.length === 0)) && (
                 <WaypointList
                   waypoints={waypoints}
                   onUpdateWaypoints={setWaypoints}
